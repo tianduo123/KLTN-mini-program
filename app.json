@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/me/me",
+    "pages/lianxi/lianxi",
+    "pages/yuyue/yuyue"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "快乐童年",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#ff9600",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./icon/index.png",
+        "selectedIconPath": "./icon/sele_index.png"
+      },
+      {
+        "pagePath": "pages/yuyue/yuyue",
+        "text": "预约",
+        "iconPath": "./icon/yuyue.png",
+        "selectedIconPath": "./icon/sele_yuyue.png"
+      },
+      {
+        "pagePath": "pages/lianxi/lianxi",
+        "text": "联系",
+        "iconPath": "./icon/lianxi.png",
+        "selectedIconPath": "./icon/sele_lianxi.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "./icon/me.png",
+        "selectedIconPath": "./icon/sele_me.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.0",
+	"appid": "wx9e1b7369105e9c19",
+	"projectname": "%E5%BF%AB%E4%B9%90%E7%AB%A5%E5%B9%B4",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "预约",
+					"pathName": "pages/yuyue/yuyue"
+				}
+			]
+		}
+	}
+}
