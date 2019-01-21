@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -37,12 +37,24 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "预约",
-					"pathName": "pages/yuyue/yuyue"
+					"pathName": "pages/yuyue/yuyue",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "视频详情",
+					"pathName": "pages/video_detail/video_detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "联系",
+					"pathName": "pages/lianxi/lianxi"
 				}
 			]
 		}

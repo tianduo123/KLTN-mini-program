@@ -45,16 +45,23 @@ Page({
       })
     }else{
       //调取预约接口，成功后执行以下代码
-      wx.showToast({
-        title: '预约成功',
+      wx.request({
+        url: `http://192.168.8.100/children/index.php/Api/yu/yuyue?admin_id=5&order_name=${e.detail.value.name}&phone=${e.detail.value.phone}&yuyue_time=${e.detail.value.time}&tujian_name=${e.detail.value.tjr}`,
+        success:(res)=>{
+          console.log(res)
+          wx.showToast({
+            title: '预约成功',
+          })
+          //预约成功后清空输入框
+          this.setData({
+            val: '',
+            name1: '',
+            tel: '',
+            name2: ''
+          })
+        }
       })
-      //预约成功后清空输入框
-      this.setData({
-        val: '',
-        name1: '',
-        tel: '',
-        name2: ''
-      })
+    
     }
   },
   /**

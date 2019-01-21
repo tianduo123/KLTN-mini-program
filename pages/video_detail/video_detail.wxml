@@ -1,0 +1,4 @@
+<!--pages/video_detail/video_detail.wxml-->
+<video controls class='video'></video>
+<view class='title'>视频标题</view>
+<view class='line'></view>

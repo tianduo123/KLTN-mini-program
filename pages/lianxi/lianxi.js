@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isSele:true
   },
 
   /**
@@ -14,7 +14,39 @@ Page({
   onLoad: function (options) {
 
   },
-
+  //电话咨询函数
+  phone(){
+    this.setData({
+      isSele:true
+    })
+    wx.makePhoneCall({
+      phoneNumber: '18788888888',
+    })
+  },
+  //导航函数
+  daohang(){
+    console.log('点击的导航')
+    this.setData({
+      isSele:false
+    })
+    wx.openLocation({
+      latitude: 39.905425,
+      longitude: 116.641587,
+      name:'通州万达',
+      address:'这是详细地址'
+    })
+    // wx.getLocation({
+    //   type:'gcj02',//返回可以用于wx.openLocation的经纬度  
+    //   success: function(res) {
+    //     console.log(res)
+    //     wx.openLocation({
+    //       latitude: 39.905425,
+    //       longitude: 116.641587,
+    //       name:'通州万达'
+    //     })
+    //   },
+    // })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
