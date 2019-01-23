@@ -44,8 +44,26 @@ Page({
       }
     })
   },
+  //视频详情
   toVideoDetail(e){
     console.log('点击了视频',e)
+    wx.navigateTo({
+      url: `/pages/video_detail/video_detail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
+  //商品详情
+  toGoodsDetail(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `/pages/goods_detail/goods_detail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
+  //功能区详情
+  toFuncdetail(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `/pages/func_detail/func_detail?id=${e.currentTarget.dataset.id}`,
+    })
   },
 
   /**

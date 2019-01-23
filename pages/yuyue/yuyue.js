@@ -1,4 +1,5 @@
 // pages/yuyue/yuyue.js
+let api = require('../../request/api.js')
 Page({
 
   /**
@@ -8,14 +9,24 @@ Page({
     val:'',
     name1:'',
     tel:'',
-    name2:''
+    name2:'',
+    imgurl:api.API_IMG
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取预约页面顶部图片
+    wx.request({
+      url: api.getImg(),
+      success:(res)=>{
+        console.log(res.data.re.image)
+        this.setData({
+          imageurl:res.data.re.image
+        })
+      }
+    })
   },
   //选择日期函数
   binddatechange(e){

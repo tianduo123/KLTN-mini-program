@@ -1,18 +1,33 @@
 // pages/video_detail/video_detail.js
+let api = require('../../request/api.js')
+var WxParse = require('../../wxParse/wxParse.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    video_url:api.API_IMG
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    wx.request({
+      url: api.getVideiDetail(options.id),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          detail: res.data.re,
+          videoUrl:res.data.re.video
+        })
+        var article = this.data.detail.content;
+        WxParse.wxParse('article', 'html', article, this, 5);
+      }
+    })
   },
 
   /**

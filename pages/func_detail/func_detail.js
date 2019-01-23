@@ -1,6 +1,7 @@
-// pages/goods_detail/goods_detail.js
+// pages/func_detail/func_detail.js
 let api = require('../../request/api.js')
 var WxParse = require('../../wxParse/wxParse.js');
+
 Page({
 
   /**
@@ -15,12 +16,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      funcId:options.id
+    })
     wx.request({
-      url: api.getBannerDetail(options.id),
+      url: api.getFuncdetail(options.id),
       success:(res)=>{
         console.log(res)
         this.setData({
-          detail:res.data.re
+          detail: res.data.re
         })
         var article = this.data.detail.content;
         WxParse.wxParse('article', 'html', article, this, 5);
@@ -28,6 +32,16 @@ Page({
     })
   },
 
+  //点赞
+  like(){
+    console.log('点赞+1')
+    wx.request({
+      url: api.like(this.data.funcId),
+      success:(res)=>{
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

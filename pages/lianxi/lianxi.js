@@ -1,4 +1,5 @@
 // pages/lianxi/lianxi.js
+let api = require('../../request/api.js')
 Page({
 
   /**
@@ -12,7 +13,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取幼儿园地址
+    wx.request({
+      url: api.getAddress(),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          userInfo:res.data.re,
+          latitude: res.data.re.jingweidu.split(',')[0],
+          longitude: res.data.re.jingweidu.split(',')[1],
+        })
+      }
+    })
   },
   //电话咨询函数
   phone(){
@@ -20,21 +32,23 @@ Page({
       isSele:true
     })
     wx.makePhoneCall({
-      phoneNumber: '18788888888',
+      phoneNumber: this.data.userInfo.phone,
     })
   },
   //导航函数
   daohang(){
-    console.log('点击的导航')
+    console.log(parseFloat(this.data.latitude),this.data.longitude)
     this.setData({
       isSele:false
     })
     wx.openLocation({
-      latitude: 39.905425,
-      longitude: 116.641587,
-      name:'通州万达',
-      address:'这是详细地址'
+      latitude: parseFloat(this.data.userInfo.jingweidu.split(',')[0]),
+      longitude:parseFloat(this.data.userInfo.jingweidu.split(',')[1]),
+      name: this.data.userInfo.school_name,
+      address: this.data.userInfo.address
     })
+
+
     // wx.getLocation({
     //   type:'gcj02',//返回可以用于wx.openLocation的经纬度  
     //   success: function(res) {
@@ -46,6 +60,8 @@ Page({
     //     })
     //   },
     // })
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,2 +1,5 @@
 <!--pages/goods_detail/goods_detail.wxml-->
-<text>pages/goods_detail/goods_detail.wxml</text>
+<import src="../../wxParse/wxParse.wxml"/>
+<view class='wxParse'>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view> 
