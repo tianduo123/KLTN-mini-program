@@ -44,3 +44,9 @@
   justify-content: space-around;
   margin-left: 27rpx
 }
+
+.wrap{
+  position: fixed;
+  top: 0;
+  left: 0
+}

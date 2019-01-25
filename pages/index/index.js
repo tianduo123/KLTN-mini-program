@@ -1,18 +1,35 @@
 let api = require('../../request/api.js')
-// let request = require('../../request/request.js')
+let app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     imgurl:api.API_IMG
+     imgurl:api.API_IMG,
+     isShow:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取用户经纬度（显示附近商家需要）
+    wx.getLocation({
+      success: function(res) {
+        console.log(res)
+      },
+    })
+    //获取屏幕高度（显示用户授权蒙层需要）
+    wx.getSystemInfo({
+      success:(res) =>{
+        console.log(res.screenHeight)
+        this.setData({
+          Height:res.screenHeight
+        })
+      },
+    })
+
     //获取首页轮播
     wx.request({
       url: api.getBanner(),
@@ -43,6 +60,15 @@ Page({
         })
       }
     })
+  },
+  getUserInfo(res){
+    console.log(res)
+    if (res.detail.rawData){
+      // console.log(app.globalData.userInfo)
+      this.setData({
+        isShow:true
+      })
+    }
   },
   //视频详情
   toVideoDetail(e){
@@ -77,7 +103,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    //获取首页功能区分类
+    wx.request({
+      url: api.getFunctional(),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          functionalList: res.data.re
+        })
+      }
+    })
   },
 
   /**

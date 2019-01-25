@@ -1,7 +1,11 @@
 const API_BASE = 'http://192.168.8.100/children/index.php/Api'
 const API_IMG = 'http://192.168.8.100/children/'
 const BASE_ID = 5
-
+let app = getApp()
+//获取openid
+function getOpenid(a,b,c){
+  return API_BASE + `/user/openid?appid=${a}&secret=${b}&code=${c}`
+}
 //获取首页轮播图
 function getBanner(){
   return API_BASE + `/index/turn?admin_id=${BASE_ID}`
@@ -31,13 +35,14 @@ function getAddress(){
   return API_BASE + `/address/address?admin_id=${BASE_ID}`
 }
 //获取功能区详情
-function getFuncdetail(e){
-  return API_BASE + `/index/eduDetail?admin_id=${BASE_ID}&cid=${e}`
+function getFuncdetail(e,f){
+  return API_BASE + `/index/eduDetail?admin_id=${BASE_ID}&cid=${e}&openid=${f}`
 }
 //点赞接口
-function like(e){
-  return API_BASE + `/index/eduCategoryZan?admin_id=${BASE_ID}&openid=0&category_id=${e}`
+function like(e,f){
+  return API_BASE + `/index/eduCategoryZan?admin_id=${BASE_ID}&openid=${f}&category_id=${e}`
 }
+//
 module.exports = {
   API_IMG,
   getBanner,
@@ -49,4 +54,5 @@ module.exports = {
   getFuncdetail,
   getVideiDetail,
   like,
+  getOpenid
 }

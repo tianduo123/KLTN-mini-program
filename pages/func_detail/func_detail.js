@@ -1,4 +1,5 @@
 // pages/func_detail/func_detail.js
+let app = getApp()
 let api = require('../../request/api.js')
 var WxParse = require('../../wxParse/wxParse.js');
 
@@ -8,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isZan:false,
+    // status:''
   },
 
   /**
@@ -20,9 +22,18 @@ Page({
       funcId:options.id
     })
     wx.request({
-      url: api.getFuncdetail(options.id),
+      url: api.getFuncdetail(options.id,app.globalData.openid),
       success:(res)=>{
         console.log(res)
+        if(res.data.is_zan == 0){
+          this.setData({
+            isZan:false
+          })
+        }else{
+          this.setData({
+            isZan:true
+          })
+        }
         this.setData({
           detail: res.data.re
         })
@@ -36,9 +47,25 @@ Page({
   like(){
     console.log('点赞+1')
     wx.request({
-      url: api.like(this.data.funcId),
+      url: api.like(this.data.funcId,app.globalData.openid),
       success:(res)=>{
-        console.log(res)
+        console.log(res) 
+        this.setData({
+          isZan:!this.data.isZan,
+        })
+        wx.showToast({
+          title: res.data.msg,
+        })
+        //重新调用详情接口，更新点赞数量
+        wx.request({
+          url: api.getFuncdetail(this.data.funcId),
+          success: (res) => {
+            console.log(res)
+            this.setData({
+              detail: res.data.re
+            })
+          }
+        })
       }
     })
   },
@@ -46,14 +73,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
 
   /**

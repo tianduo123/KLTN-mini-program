@@ -1,4 +1,5 @@
 //app.js
+let api = require('./request/api.js')
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -11,6 +12,13 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res)
+        wx.request({
+         url:api.getOpenid(this.globalData.appid, this.globalData.secret, res.code),
+         success:(res)=>{
+           console.log(res)
+           this.globalData.openid = res.data.openid
+         }
+        })
       }
     })
     // 获取用户信息
@@ -22,6 +30,7 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
+              console.log(this.globalData.userInfo)
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -37,6 +46,7 @@ App({
   globalData: {
     userInfo: null,
     appid: 'wx9e1b7369105e9c19',
-    // secret:
+    secret:'5acd0b38832c32ab1cc42ed71d43cfee',
+    openid:''
   }
 })
