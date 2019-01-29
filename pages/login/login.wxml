@@ -1,0 +1,27 @@
+<!--pages/login/login.wxml-->
+<!-- <text>pages/login/login.wxml</text> -->
+<view class='avatar'>
+  <image style='width:100%;height:100%' src='{{userInfo.avatarUrl}}'></image>
+</view>
+<view class='name'>{{userInfo.nickName}}</view>
+<form bindsubmit='login'>
+  <view class='item'>
+    <input class='inp' placeholder='请输入您的姓名' name='name' bindinput='getName'></input>
+  </view>
+  <view class='item'>
+    <input class='inp' placeholder='请输入您的手机号' name='phone' bindinput='getPhone'></input>
+  </view>
+    <view class='item'>
+    <input class='inp' placeholder='请输入您的密码' name='password'></input>
+  </view>
+  <view class='item'>
+    <input class='inp2' placeholder='请输入验证码' name='usercode'></input>
+    <view class='{{ msg=="已发送"?"getpsd2":"getpsd"}}' bindtap='getcode'>{{msg}}<view class='timer'wx:if='{{msg=="已发送"}}'>({{timer_num}}s)</view></view>
+  </view>
+  <view class='item'>
+    <input class='inp' placeholder='请输入您的推荐人(若无则不填)' name='tjr'></input>
+  </view>
+  <button class='btn' form-type='submit'>注册</button>
+</form>
+
+

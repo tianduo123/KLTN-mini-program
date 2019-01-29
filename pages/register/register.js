@@ -1,4 +1,4 @@
-// pages/me/me.js
+// pages/register/register.js
 let app = getApp()
 let api = require('../../request/api.js')
 Page({
@@ -7,41 +7,61 @@ Page({
    * 页面的初始数据
    */
   data: {
-    score:''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    //从缓存中拿用户微信头像
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          userInfo: res.data
+        })
+      },
+    })
   },
-  //积分兑换
-  jifen(){
-    //判断用户是否登录、
+  //登录
+  register(e){
+    console.log(e)
     wx.request({
-      url: api.isLogin(app.globalData.openid),
+      url: api.register(e.detail.value.phone,e.detail.value.password),
       success:(res)=>{
         console.log(res)
-        if(res.data.status==0){
-          //用户未注册，跳转注册界面
-          wx.navigateTo({
-            url: '../login/login',
+        wx.setStorage({
+          key: 'userId',
+          data: res.data.data.id,
+        })
+        wx.setStorage({
+          key: 'jifen',
+          data: res.data.data.score,
+        })
+        if(res.data.status == 0){
+          //失败
+          wx.showToast({
+            title: '手机号或密码输入错误',
+            icon:'none'
           })
         }else{
-          //用户已注册，跳转登录界面
-          wx.reLaunch({
-            url: '../register/register',
-          })
+          //成功
+          wx.showToast({
+            title: '登录成功',
+            success:()=>{
+              setTimeout(()=>{
+                wx.switchTab({
+                  url: '../me/me',
+                })
+              },1500)
+            }
+          })         
         }
       }
     })
   },
-  //每日签到
-  qiandao(){
-    
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -53,25 +73,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //获取用户信息
-    wx.getUserInfo({
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo
-        })
-      }
-    })
-    //从缓存中拿用户积分
-    wx.getStorage({
-      key: 'jifen',
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          score:res.data
-        })
-      },
-    })
+
   },
 
   /**

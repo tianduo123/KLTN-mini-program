@@ -7,7 +7,10 @@
     "pages/yuyue/yuyue",
     "pages/goods_detail/goods_detail",
     "pages/video_detail/video_detail",
-    "pages/func_detail/func_detail"
+    "pages/func_detail/func_detail",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/near/near"
   ],
   "window": {
     "backgroundTextStyle": "light",

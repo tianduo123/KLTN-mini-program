@@ -61,12 +61,24 @@ Page({
       }
     })
   },
+  //获取用户信息
   getUserInfo(res){
     console.log(res)
     if (res.detail.rawData){
-      // console.log(app.globalData.userInfo)
+      //将用户信息存到缓存
+      wx.setStorage({
+        key: 'userInfo',
+        data: res.detail.userInfo,
+      })
       this.setData({
         isShow:true
+      })
+      //调用接口保存用户授权信息
+      wx.request({
+        url: api.saveUser(app.globalData.openid, res.detail.userInfo.nickName, res.detail.userInfo.avatarUrl),
+        success:(res)=>{
+          console.log(res)
+        }
       })
     }
   },

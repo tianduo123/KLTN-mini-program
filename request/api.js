@@ -42,7 +42,26 @@ function getFuncdetail(e,f){
 function like(e,f){
   return API_BASE + `/index/eduCategoryZan?admin_id=${BASE_ID}&openid=${f}&category_id=${e}`
 }
-//
+//短信接口
+function getcode(e){
+  return API_BASE + `/user/smsSend2?phone=${e}`
+}
+//用户注册
+function login(a,b,c,d,e,f,g){
+  return API_BASE + `/user/register?admin_id=${BASE_ID}&openid=${a}&phone=${b}&name=${c}&password=${d}&code=${e}&user_code=${f}&tuijian=${g}`
+}
+//判断用户是否注册
+function isLogin(a){
+  return API_BASE + `/user/isLogin?admin_id=${BASE_ID}&openid=${a}`
+} 
+//保存用户授权信息
+function saveUser(a,b,c){
+  return API_BASE + `/user/saveUser?admin_id=${BASE_ID}&openid=${a}&nickname=${b}&headimgurl=${c}`
+}
+//用户登录
+function register(a,b){
+  return API_BASE + `/user/login?phone=${a}&password=${b}`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -54,5 +73,10 @@ module.exports = {
   getFuncdetail,
   getVideiDetail,
   like,
-  getOpenid
+  getOpenid,
+  getcode,
+  login,
+  isLogin,
+  saveUser,
+  register
 }

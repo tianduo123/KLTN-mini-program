@@ -1,0 +1,17 @@
+<!--pages/login/login.wxml-->
+<!-- <text>pages/login/login.wxml</text> -->
+<view class='avatar'>
+  <image style='width:100%;height:100%' src='{{userInfo.avatarUrl}}'></image>
+</view>
+<view class='name'>{{userInfo.nickName}}</view>
+<form bindsubmit='register'>
+  <view class='item'>
+    <input class='inp' placeholder='请输入您的手机号' name='phone'></input>
+  </view>
+    <view class='item'>
+    <input class='inp' placeholder='请输入您的密码' name='password'></input>
+  </view>
+  <button class='btn' form-type='submit'>登录</button>
+</form>
+
+
