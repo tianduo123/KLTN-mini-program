@@ -95,12 +95,30 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around */
 }
 .content_wrap{
   width: 90%;
   height: 800rpx;
-  /* margin: auto; */
   background: #ffffff;
   border-radius: 20rpx;
+}
+.content_wrap_top{
+  width: 100%;
+  height: 170rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}
+.content_wrap_top>image{
+  width: 424rpx;
+  height: 80rpx
+}
+.content_wrap_bottom{
+  width: 90%;
+  font-size: 26rpx;
+  color: #666666;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  
 }
