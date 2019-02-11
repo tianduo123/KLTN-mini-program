@@ -10,7 +10,9 @@
     "pages/func_detail/func_detail",
     "pages/login/login",
     "pages/register/register",
-    "pages/near/near"
+    "pages/near/near",
+    "pages/qiandao/qiandao",
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",

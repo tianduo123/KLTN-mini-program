@@ -1,0 +1,7 @@
+<!--pages/message/message.wxml-->
+<view class='wrap'>
+  <textarea style='width:100%;height:100%' placeholder='说说您的建议，提建议一次奖励20成长豆，采纳奖励200成长豆'>
+  </textarea>
+</view>
+<view class='line'></view>
+<view class='btn'>提交建议</view>

@@ -1,5 +1,7 @@
-const API_BASE = 'http://192.168.8.100/children/index.php/Api'
-const API_IMG = 'http://192.168.8.100/children/'
+// const API_BASE = 'http://192.168.8.100/children/index.php/Api'
+// const API_IMG = 'http://192.168.8.100/children/'
+const API_BASE = 'http://47.107.86.148/syb/children/index.php/Api'
+const API_IMG = 'http://47.107.86.148/syb/children/'
 const BASE_ID = 5
 let app = getApp()
 //获取openid

@@ -1,0 +1,93 @@
+<!--pages/qiandao/qiandao.wxml-->
+<view style='overflow-x:hidden;width:750rpx'>
+
+<image src='../../icon/box.png' class='box'></image>
+<image src='../../icon/rule.png' class='rule' bindtap='rule'></image>
+<view class='top'>
+  <view style='width:100%;margin-left:480rpx;font-size:28rpx;margin-top:50rpx'>成长豆明细>></view>
+  <view style='font-size:30rpx;font-weight:bold;color:#000000;margin-top:100rpx;width:100%;text-align:center'>
+    成长豆：
+    <view style='font-size:32rpx;font-weight:bold;color:#fd4d4a;display:inline-block'>666</view>
+  </view>
+  <view class='qiandao'>点击签到</view>
+  <view style='font-size:26rpx;width:100%;text-align:center'>
+    已连续签到
+    <view style='display:inline-block;color:#ff394c'>3</view>
+    天
+  </view>
+  <view class='wrap'>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第一天</view>
+    </view>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第二天</view>
+    </view>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第三天</view>
+    </view>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第四天</view>
+    </view>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第五天</view>
+    </view>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第六天</view>
+    </view>
+    <view class='item'>
+      <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+      <view>第七天</view>
+    </view>
+  </view>
+</view>
+
+<view class='bottom'>
+  <view class='title'>
+    <view style='display:inline-block;margin-left:20rpx'>成长豆任务</view>
+  </view>
+  <view class='work'>
+    <view class='left'>
+      <view>转发好友</view>
+      <view style='color:#999999'>分享小程序给好友</view>
+    </view>
+    <view class='right'>
+      <view class='btn'>去完成</view>
+    </view>
+  </view>
+  <view class='work'>
+    <view class='left'>
+      <view>推荐人</view>
+      <view style='color:#999999'>预约页面填写推荐人手机号：500成长豆</view>
+    </view>
+    <view class='right'>
+      <view class='btn'>去完成</view>
+    </view>
+  </view>
+  <view class='work'>
+    <view class='left'>
+      <view>提建议</view>
+      <view style='color:#999999'>1条10成长豆(20字以上)，一经采纳获赠200成长豆</view>
+    </view>
+    <view class='right'>
+      <view class='btn'>去完成</view>
+    </view>
+  </view>
+</view>
+
+<!-- 积分规则 -->
+<view class='rule_wrap' style='width:100%;height:100%;' wx:if='{{isShow}}'>
+  <view style='width:100%;text-align:right;margin-top:150rpx;margin-bottom:30rpx;'>
+    <image src='../../icon/close.svg' style='margin-right:50rpx;width:60rpx;height:60rpx' bindtap='close'></image>
+  </view>
+  <view class='content_wrap'>
+
+  </view>
+</view>
+
+</view>

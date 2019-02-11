@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -78,7 +78,19 @@
 				{
 					"id": -1,
 					"name": "附近商家",
-					"pathName": "pages/near/near"
+					"pathName": "pages/near/near",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "签到",
+					"pathName": "pages/qiandao/qiandao",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "留言",
+					"pathName": "pages/message/message"
 				}
 			]
 		}

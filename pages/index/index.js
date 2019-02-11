@@ -27,6 +27,7 @@ Page({
         this.setData({
           Height:res.screenHeight
         })
+        app.globalData.Height = res.screenHeight
       },
     })
 
