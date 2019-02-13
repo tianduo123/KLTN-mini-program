@@ -79,25 +79,35 @@ Page({
   //注册
   login(e) {
     console.log(e)
-    wx.request({
-      url: api.login(app.globalData.openid, e.detail.value.phone, e.detail.value.name, e.detail.value.password, this.data.code, e.detail.value.usercode, e.detail.value.tjr),
-      success: (res) => {
-        console.log(res)
-        if (res.data.status == 1) {
-          //注册成功,跳转登录页面
-          wx.showToast({
-            title: '注册成功请登录',
-            success:()=>{
-              setTimeout(()=>{
-                wx.reLaunch({
-                  url: '../register/register',
-                })
-              },1500)
-            }
-          })
+    //前端判断用户输入验证码是否正确
+    if(this.data.code == e.detail.value.usercode){
+      //输入正确 --> 调注册接口
+      wx.request({
+        url: api.login(app.globalData.openid, e.detail.value.phone, e.detail.value.name, e.detail.value.password, e.detail.value.tjr),
+        success: (res) => {
+          console.log(res)
+          if (res.data.status == 1) {
+            //注册成功,跳转登录页面
+            wx.showToast({
+              title: '注册成功请登录',
+              success: () => {
+                setTimeout(() => {
+                  wx.reLaunch({
+                    url: '../register/register',
+                  })
+                }, 1500)
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    }else{
+      //输入错误 --> 提示
+      wx.showToast({
+        title: '验证码错误，请重新输入',
+        icon:'none'
+      })
+    }
   },
 
   /**

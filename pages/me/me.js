@@ -26,7 +26,7 @@ Page({
     if(app.globalData.userId){
       //已登录 --> 跳转积分兑换页面
       wx.navigateTo({
-        url: '../near/near',
+        url: '../getgoods/getgoods',
       })
     }else{
       //未登录 --> 判断用户是否注册

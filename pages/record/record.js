@@ -1,42 +1,18 @@
-// pages/video_detail/video_detail.js
-let api = require('../../request/api.js')
-var WxParse = require('../../wxParse/wxParse.js');
-
+// pages/record/record.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    video_url:api.API_IMG
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    wx.request({
-      url: api.getVideiDetail(options.id),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          detail: res.data.re,
-          videoUrl:res.data.re.video
-        })
-        var article = this.data.detail.content;
-        WxParse.wxParse('article', 'html', article, this, 5);
-      }
-    })
-    //获取手机系统，用于显示评论内容是否居中
-    wx.getSystemInfo({
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          system:res.platform
-        })
-      },
-    })
+
   },
 
   /**

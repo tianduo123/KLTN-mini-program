@@ -1,7 +1,7 @@
-// const API_BASE = 'http://192.168.8.100/children/index.php/Api'
-// const API_IMG = 'http://192.168.8.100/children/'
-const API_BASE = 'http://47.107.86.148/syb/children/index.php/Api'
-const API_IMG = 'http://47.107.86.148/syb/children/'
+const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
+const API_IMG = 'http://192.168.8.101/syb/'
+// const API_BASE = 'http://47.107.86.148/syb/children/index.php/Api'
+// const API_IMG = 'http://47.107.86.148/syb/children/'
 const BASE_ID = 5
 let app = getApp()
 //获取openid
@@ -49,8 +49,8 @@ function getcode(e){
   return API_BASE + `/user/smsSend2?phone=${e}`
 }
 //用户注册
-function login(a,b,c,d,e,f,g){
-  return API_BASE + `/user/register?admin_id=${BASE_ID}&openid=${a}&phone=${b}&name=${c}&password=${d}&code=${e}&user_code=${f}&tuijian=${g}`
+function login(a,b,c,d,g){
+  return API_BASE + `/user/register?admin_id=${BASE_ID}&openid=${a}&phone=${b}&name=${c}&password=${d}&tuijian=${g}`
 }
 //判断用户是否注册
 function isLogin(a){

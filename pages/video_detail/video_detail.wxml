@@ -85,5 +85,8 @@
   </view>
 </view>
 <view class='comment'>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+  <view class='inp'>
+  <textarea class='{{system=="ios"?"inp2":"inp3"}}' placeholder='我要评论'></textarea>
+  </view>
+  <view class='button'>评论</view>                    
 </view>

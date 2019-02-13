@@ -11,6 +11,34 @@
   </view>
 </view>
 <view class='line'></view>
+<view class='near'>
+    <view class='near_top'>
+      <view style='font-size:26rpx;font-weight:bold'>附近商家</view>
+      <view style='font-size:24rpx;color:#999999;margin-right:20rpx' bindtap='tonear'>更多>></view>
+    </view>
+    <scroll-view scroll-x style='white-space:nowrap;height:250rpx;'>
+      <view class='scroll_item'>
+        <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx;margin-botton:15rpx'></image>
+        <view>商家列表</view>
+      </view>
+       <view class='scroll_item'>
+        <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx'></image>
+        <view>商家列表</view>
+      </view>
+       <view class='scroll_item'>
+        <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx'></image>
+        <view>商家列表</view>
+      </view> <view class='scroll_item'>
+        <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx'></image>
+        <view>商家列表</view>
+      </view>
+       <view class='scroll_item'>
+        <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx'></image>
+        <view>商家列表</view>
+      </view>
+    </scroll-view>
+</view>
+<view class='line'></view>
 <view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>教育功能区</view>
 <view class='funwrap'>
   <view class='fun-item' wx:for='{{functionalList}}' wx:key='{{inedx}}' data-id='{{item.id}}' bindtap='toFuncdetail'>

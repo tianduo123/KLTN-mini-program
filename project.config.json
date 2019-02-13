@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -90,7 +90,21 @@
 				{
 					"id": -1,
 					"name": "留言",
-					"pathName": "pages/message/message"
+					"pathName": "pages/message/message",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "积分兑换",
+					"pathName": "pages/getgoods/getgoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "积分记录",
+					"pathName": "pages/record/record",
+					"scene": null
 				}
 			]
 		}

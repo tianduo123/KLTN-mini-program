@@ -62,6 +62,12 @@ Page({
       }
     })
   },
+  //附近商家
+  tonear(){
+    wx.navigateTo({
+      url: '../near/near',
+    })
+  },
   //获取用户信息
   getUserInfo(res){
     console.log(res)

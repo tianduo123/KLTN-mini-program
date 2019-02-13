@@ -12,13 +12,20 @@
     "pages/register/register",
     "pages/near/near",
     "pages/qiandao/qiandao",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/getgoods/getgoods",
+    "pages/record/record"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "快乐童年",
     "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "tabBar": {
     "selectedColor": "#ff9600",

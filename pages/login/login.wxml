@@ -19,7 +19,7 @@
     <view class='{{ msg=="已发送"?"getpsd2":"getpsd"}}' bindtap='getcode'>{{msg}}<view class='timer'wx:if='{{msg=="已发送"}}'>({{timer_num}}s)</view></view>
   </view>
   <view class='item'>
-    <input class='inp' placeholder='请输入您的推荐人(若无则不填)' name='tjr'></input>
+    <input class='inp' placeholder='请输入您的推荐人手机号(若无则不填)' name='tjr'></input>
   </view>
   <button class='btn' form-type='submit'>注册</button>
 </form>
