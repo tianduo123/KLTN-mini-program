@@ -1,6 +1,8 @@
 // pages/video_detail/video_detail.js
 let api = require('../../request/api.js')
+let app = getApp()
 var WxParse = require('../../wxParse/wxParse.js');
+
 
 Page({
 
@@ -8,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    video_url:api.API_IMG
+    video_url:api.API_IMG,
+    isZan:false,
+    val:''
   },
 
   /**
@@ -16,13 +20,29 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      courseid:options.id
+    })
+    //获取视频详情
     wx.request({
-      url: api.getVideiDetail(options.id),
+      url: api.getVideiDetail(options.id, app.globalData.openid),
       success:(res)=>{
         console.log(res)
+        if(res.data.is_zan.is_zan == 0){
+          this.setData({
+            isZan:false
+          })
+        }else{
+          this.setData({
+            isZan:true
+          })
+        }
         this.setData({
-          detail: res.data.re,
-          videoUrl:res.data.re.video
+          detail: res.data.data,
+          videoUrl:res.data.data.video,
+          borwser:res.data.data.browser,
+          zan:res.data.data.zan,
+          comment:res.data.data.comment
         })
         var article = this.data.detail.content;
         WxParse.wxParse('article', 'html', article, this, 5);
@@ -37,6 +57,108 @@ Page({
         })
       },
     })
+    //获取评论列表
+    wx.request({
+      url: api.commentList(this.data.courseid),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          commentList:res.data.re
+        })
+      }
+    })
+
+  },
+
+  //视频点赞
+  video_zan(){
+    console.log("视频点赞")
+    wx.request({
+      url: api.video_zan(app.globalData.openid, this.data.courseid),
+      success:(res)=>{
+        console.log(res)
+        wx.showToast({
+          title: res.data.msg,
+        })
+        //更新点赞数量
+        wx.request({
+          url: api.getVideiDetail(this.data.courseid,app.globalData.openid),
+          success: (res) => {
+            console.log(res)
+            this.setData({
+              zan: res.data.data.zan
+            })
+          }
+        })
+      }
+    })
+  },
+  //评论点赞
+  comment_zan(e){
+    console.log(e)
+    wx.request({
+      url: api.commentZan(app.globalData.openid,e.currentTarget.dataset.id),
+      success:(res)=>{
+        console.log(res)
+        wx.showToast({
+          title: res.data.msg,
+        })
+        //更新评论列表，用于更新点赞数量
+        wx.request({
+          url: api.commentList(this.data.courseid),
+          success: (res) => {
+            console.log(res)
+            this.setData({
+              commentList: res.data.re
+            })
+          }
+        })
+      }
+    })
+  },
+  //评论内容
+  getVal(e){
+    console.log(e)
+    this.setData({
+      val:e.detail.value
+    })
+  },
+  //评论
+  comment(){
+    //判断是否有输入
+    if(this.data.val){
+      wx.request({
+        url: api.comment(app.globalData.openid, this.data.val, this.data.courseid),
+        success: (res) => {
+          wx.showToast({
+            title: '评论成功',
+            success:()=>{
+              //清空输入
+              this.setData({
+                val: ''
+              })
+              //更新评论列表
+              wx.request({
+                url: api.commentList(this.data.courseid),
+                success: (res) => {
+                  console.log(res)
+                  this.setData({
+                    commentList: res.data.re,
+                    comment:res.data.re.length
+                  })
+                }
+              })
+            }
+          })          
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '请输入内容后在评论哦',
+        icon:'none'
+      })
+    }
+  
   },
 
   /**

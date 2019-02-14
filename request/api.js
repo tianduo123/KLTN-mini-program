@@ -6,7 +6,7 @@ const BASE_ID = 5
 let app = getApp()
 //获取openid
 function getOpenid(a,b,c){
-  return API_BASE + `/user/openid?appid=${a}&secret=${b}&code=${c}`
+  return API_BASE + `/user/openid?appid=${a}&secret=${b}&code=${c}&admin_id=${BASE_ID}`
 }
 //获取首页轮播图
 function getBanner(){
@@ -21,8 +21,12 @@ function getTab(){
   return API_BASE + `/index/courseCategory?admin_id=${BASE_ID}`
 }
 //获取视频详情
-function getVideiDetail(e){
-  return API_BASE + `/index/course?admin_id=${BASE_ID}&cid=${e}`
+function getVideiDetail(e,f){
+  return API_BASE + `/index/course?admin_id=${BASE_ID}&cid=${e}&openid=${f}`
+}
+//视频点赞
+function video_zan(a,b){
+  return API_BASE + `/index/courseZan?admin_id=${BASE_ID}&openid=${a}&course_id=${b}`
 }
 //获取功能区列表
 function getFunctional(){
@@ -64,6 +68,22 @@ function saveUser(a,b,c){
 function register(a,b){
   return API_BASE + `/user/login?phone=${a}&password=${b}`
 }
+//评论功能
+function comment(a,b,c){
+  return API_BASE + `/course/comment?admin_id=${BASE_ID}&openid=${a}&content=${b}&course_id=${c} `
+}
+//评论列表
+function commentList(a){
+  return API_BASE + `/course/commentList?admin_id=${BASE_ID}&course_id=${a}`
+}
+//评论点赞
+function commentZan(a,b){
+  return API_BASE + `/course/courseCommentZan?admin_id=${BASE_ID}&openid=${a}&comment_id=${b}`
+}
+//积分排行榜
+function rankList(){
+  return API_BASE + `/my/index`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -80,5 +100,10 @@ module.exports = {
   login,
   isLogin,
   saveUser,
-  register
+  register,
+  video_zan,
+  comment,
+  commentList,
+  commentZan,
+  rankList
 }

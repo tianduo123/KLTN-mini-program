@@ -32,7 +32,6 @@ Page({
       url: api.register(e.detail.value.phone, e.detail.value.password),
       success: (res) => {
         console.log(res)
-
         if (res.data.status == 0) {
           //失败
           wx.showToast({

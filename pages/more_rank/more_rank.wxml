@@ -1,0 +1,19 @@
+<!--pages/more_rank/more_rank.wxml-->
+<view class='top'>
+  <view class='title'>我的排名</view>
+  <view class='rank'>8890</view>
+</view>
+<view class='userInfo'>
+  <view class='left'>
+    <image src='{{userInfo.avatarUrl}}' style='width:60rpx;height:60rpx;border-radius:50%'></image>
+    <view style='font-size:30rpx;margin-left:20rpx'>{{userInfo.nickName}}</view>
+  </view>
+  <view class='right'>
+    <image src='../../icon/score.png' style='width:45rpx;height:45rpx'></image>
+    <view style='font-size:45rpx;margin-left:20rpx'>{{score}}</view>
+  </view>
+</view>
+<view class='rankList'>
+  
+</view>
+

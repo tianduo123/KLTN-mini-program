@@ -14,9 +14,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    console.log(app.globalData.userId)
-
+    //积分排行榜
+    wx.request({
+      url: api.rankList(),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          first:res.data.re[0],
+          second: res.data.re[1],
+          third: res.data.re[2],
+          fourth: res.data.re[3],
+          fifth: res.data.re[4],
+        })
+      }
+    })
+  },
+  //查看全部排行榜
+  toMore(){
+    wx.navigateTo({
+      url: `../more_rank/more_rank?userid=${app.globalData.userId}`,
+    })
   },
   //积分兑换
   jifen(){

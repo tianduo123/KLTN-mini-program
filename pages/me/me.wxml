@@ -28,40 +28,48 @@
 <view class='ranking'>
   <view class='title'>
     <view style='font-size:28rpx;margin-left:20rpx'>积分排行榜</view>
-    <view style='font-size:26rpx;color:#cccccc;margin-right:20rpx'>查看全部>></view>
+    <view style='font-size:26rpx;color:#cccccc;margin-right:20rpx' bindtap='toMore'>查看全部>></view>
   </view>
   <view class='content'>
     <view class='content_item'>
       <view class='info'>
         <image src='../../icon/first.png' style='width:50rpx;height:50rpx'></image>
-        <image src='../../image/bg.png' class='avatar2'></image>
-        <view style='font-size:28rpx'>愿你终于自己</view>
+        <image src='{{first.headimgurl}}' class='avatar2'></image>
+        <view style='font-size:28rpx'>{{first.nickname}}</view>
       </view>
-      <view class='num'>8888</view>
+      <view class='num'>{{first.score}}</view>
     </view>
     <view class='content_item'>
       <view class='info'>
         <image src='../../icon/second.png' style='width:50rpx;height:50rpx'></image>
-        <image src='../../image/bg.png' class='avatar2'></image>
-        <view style='font-size:28rpx'>愿你终于自己</view>
+        <image src='{{second.headimgurl}}' class='avatar2'></image>
+        <view style='font-size:28rpx'>{{second.nickname}}</view>
       </view>
-      <view class='num'>8888</view>
+      <view class='num'>{{second.score}}</view>
     </view>
     <view class='content_item'>
       <view class='info'>
         <image src='../../icon/third.png' style='width:50rpx;height:50rpx'></image>
-        <image src='../../image/bg.png' class='avatar2'></image>
-        <view style='font-size:28rpx'>愿你终于自己</view>
+        <image src='{{third.headimgurl}}' class='avatar2'></image>
+        <view style='font-size:28rpx'>{{third.nickname}}</view>
       </view>
-      <view class='num'>8888</view>
+      <view class='num'>{{third.score}}</view>
     </view>
-     <view class='content_item'>
+    <view class='content_item'>
       <view class='info'>
         <view style='margin-left:14rpx;font-size:28rpx'>4</view>
-        <image src='../../image/bg.png' class='avatar2' style='margin-left:56rpx'></image>
-        <view style='font-size:28rpx'>愿你终于自己</view>
+        <image src='{{fourth.headimgurl}}' class='avatar2' style='margin-left:56rpx'></image>
+        <view style='font-size:28rpx'>{{fourth.nickname}}</view>
       </view>
-      <view class='num'>8888</view>
+      <view class='num'>{{fourth.score}}</view>
+    </view>
+    <view class='content_item'>
+      <view class='info'>
+        <view style='margin-left:14rpx;font-size:28rpx'>5</view>
+        <image src='{{fifth.headimgurl}}' class='avatar2' style='margin-left:56rpx'></image>
+        <view style='font-size:28rpx'>{{fifth.nickname}}</view>
+      </view>
+      <view class='num'>{{fifth.score}}</view>
     </view>
   </view>
 </view>

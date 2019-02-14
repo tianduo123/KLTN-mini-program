@@ -1,6 +1,6 @@
 /* pages/register/register.wxss */
 page{
-  background-image: url(http://192.168.8.100/children/Uploads/2019-01/1548639126-5c4e5b966a3cf.png);
+  background-image: url(http://192.168.8.101/children/Uploads/2019-01/1548639126-5c4e5b966a3cf.png);
   background-size: 100% 100%;
   background-repeat: no-repeat
 }
