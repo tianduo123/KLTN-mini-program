@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -111,6 +111,13 @@
 					"id": -1,
 					"name": "排行榜更多",
 					"pathName": "pages/more_rank/more_rank",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "修改密码",
+					"pathName": "pages/reset_psd/reset_psd",
 					"scene": null
 				}
 			]

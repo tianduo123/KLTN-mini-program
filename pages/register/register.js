@@ -63,6 +63,12 @@ Page({
       }
     })
   },
+  //忘记密码
+  forget(){
+    wx.navigateTo({
+      url: '../reset_psd/reset_psd',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

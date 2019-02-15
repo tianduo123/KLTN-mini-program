@@ -32,10 +32,14 @@ page{
 }
 .rankList{
   width: 90%;
-  height: 500rpx;
+  height: 700rpx;
   border-radius: 20rpx;
   background: #fff;
-  margin: 0 auto
+  margin: 0 auto;
+  box-shadow: 10rpx 10rpx 5rpx #eeeeee;
+  box-sizing: border-box;
+  padding: 30rpx;
+  margin-bottom: 80rpx
 }
 .left{
   display: flex;
@@ -46,4 +50,19 @@ page{
   display: flex;
   align-items: center;
   margin-right: 30rpx
+}
+.rank_item{
+  width: 100%;
+  height: 130rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  justify-content: space-between
+}
+.score{
+  text-align: right
+}
+.user{
+  display: flex;
+  align-items: center
 }

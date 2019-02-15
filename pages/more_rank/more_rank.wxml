@@ -1,7 +1,7 @@
 <!--pages/more_rank/more_rank.wxml-->
 <view class='top'>
   <view class='title'>我的排名</view>
-  <view class='rank'>8890</view>
+  <view class='rank'>{{userRank}}</view>
 </view>
 <view class='userInfo'>
   <view class='left'>
@@ -13,7 +13,38 @@
     <view style='font-size:45rpx;margin-left:20rpx'>{{score}}</view>
   </view>
 </view>
-<view class='rankList'>
+<scroll-view class='rankList' scroll-y>
+  <view class='rank_item'>
+    <view class='user'>
+      <image src='../../icon/first.png' style='width:50rpx;height:50rpx'></image>
+      <image src='{{first.headimgurl}}' style='width:60rpx;height:60rpx;border-radius:50%;margin-left:20rpx;margin-right:20rpx'></image>
+      <view style='font-size:26rpx;color:#0088ff'>{{first.nickname}}</view>
+    </view>
+    <view class='score' style='font-size:26rpx;color:#0088ff'>{{first.score}}</view>
+  </view>
+  <view class='rank_item'>
+    <view class='user'>
+      <image src='../../icon/second.png' style='width:50rpx;height:50rpx'></image>
+      <image src='{{srcond.headimgurl}}' style='width:60rpx;height:60rpx;border-radius:50%;margin-left:20rpx;margin-right:20rpx'></image>
+      <view style='font-size:26rpx;color:#0088ff'>{{second.nickname}}</view>
+    </view>
+    <view class='score' style='font-size:26rpx;color:#0088ff'>{{second.score}}</view>
+  </view>
+  <view class='rank_item'>
+    <view class='user'>
+      <image src='../../icon/third.png' style='width:50rpx;height:50rpx'></image>
+      <image src='{{third.headimgurl}}' style='width:60rpx;height:60rpx;border-radius:50%;margin-left:20rpx;margin-right:20rpx'></image>
+      <view style='font-size:26rpx;color:#0088ff'>{{third.nickname}}</view>
+    </view>
+    <view class='score' style='font-size:26rpx;color:#0088ff'>{{third.score}}</view>
+  </view>
+   <view class='rank_item' wx:for='{{newArr}}' wx:key>
+    <view class='user'>
+      <view style='font-size:24rpx;width:50rpx;height:50rpx;text-align:center;line-height:50rpx'>{{index+4}}</view>
+      <image src='{{item.headimgurl}}' style='width:60rpx;height:60rpx;border-radius:50%;margin-left:20rpx;margin-right:20rpx'></image>
+      <view style='font-size:26rpx;color:#666666'>{{item.nickname}}</view>
+    </view>
+    <view class='score' style='font-size:26rpx;'>{{item.score}}</view>
+  </view>
   
-</view>
-
+</scroll-view>

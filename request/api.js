@@ -84,6 +84,10 @@ function commentZan(a,b){
 function rankList(){
   return API_BASE + `/my/index`
 }
+//积分排行榜总榜
+function allRankList(){
+  return API_BASE + `/my/more`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -105,5 +109,6 @@ module.exports = {
   comment,
   commentList,
   commentZan,
-  rankList
+  rankList,
+  allRankList
 }

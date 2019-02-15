@@ -1,4 +1,6 @@
 // pages/more_rank/more_rank.js
+let app = getApp()
+let api = require('../../request/api.js')
 Page({
 
   /**
@@ -13,6 +15,32 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    //获取全部排行榜
+    wx.request({
+      url: api.allRankList(),
+      success:(res)=>{
+        console.log(res)
+        //通过userid,循环排行榜数组，拿到用户排名
+        console.log(app.globalData.userId)
+        var userId = app.globalData.userId;
+        var idArr = res.data.map((item)=>{
+          return item.id
+        })
+        console.log(idArr)
+        console.log(idArr.indexOf(userId)+1)
+        //截取数组4-最后一名
+        var newArr = res.data.slice(3)
+        console.log(newArr)
+        this.setData({
+          first:res.data[0],
+          second:res.data[1],
+          third:res.data[2],
+          newArr,
+          userRank: idArr.indexOf(userId) + 1
+        })
+  
+      }
+    })
   },
 
   /**
