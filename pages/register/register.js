@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    val:''
   },
 
   /**
@@ -65,6 +65,10 @@ Page({
   },
   //忘记密码
   forget(){
+    //清空用户输入数据
+    this.setData({
+
+    })
     wx.navigateTo({
       url: '../reset_psd/reset_psd',
     })

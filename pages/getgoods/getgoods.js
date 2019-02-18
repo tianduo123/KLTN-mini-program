@@ -1,21 +1,33 @@
 // pages/getgoods/getgoods.js
+let api = require('../../request/api.js')
+let app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    imgUrl: api.API_IMG
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取兑换商品列表
+    wx.request({
+      url: api.goodsList(),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          goodsList:res.data.re
+        })
+      }
+    })
   },
   //兑换商品
-  getGood(){
+  getGood(e){
+    console.log(e)
     wx.showModal({
       title: '提示',
       content: '您确定要兑换此商品吗',
@@ -23,9 +35,23 @@ Page({
         if(res.confirm){
           //点击了确定，调兑换接口
           console.log('兑换')
-          wx.showToast({
-            title: '兑换成功',
+          wx.request({
+            url: api.getGoods(app.globalData.openid,app.globalData.userId,e.currentTarget.dataset.id,e.currentTarget.dataset.num),
+            success:(res)=>{
+              console.log(res)
+              if(res.data.status==1){
+                wx.showToast({
+                  title: '兑换成功',
+                })
+              }else{
+                wx.showToast({
+                  title: res.data.message,
+                  icon:'none'
+                })
+              }
+            }
           })
+       
         }else{
           //点击了取消
         }

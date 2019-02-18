@@ -18,6 +18,18 @@ Page({
   },
   //成长豆规则
   rule(){
+    //获取成长豆规则
+    wx.request({
+      url: api.getRule(),
+      success:(res)=>{
+        console.log(res)
+        var ruleList = res.data.re.content.split(';')
+        console.log(ruleList)
+        this.setData({
+          ruleList
+        })
+      }
+    })
     this.setData({
       isShow:true
     })

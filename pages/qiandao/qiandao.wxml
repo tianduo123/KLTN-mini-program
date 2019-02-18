@@ -90,10 +90,7 @@
         <image src='../../icon/rule2.png'></image>
       </view>
       <view class='content_wrap_bottom'>
-        <view> 1.这是积分规则这是积分规则这是积分规则这是积分规则这是积分规则这是积分规则</view>
-        <view> 2.这是积分规则</view>
-        <view> 3.这是积分规则</view>
-        <view> 4.这是积分规则</view>       
+        <view wx:for='{{ruleList}}' wx:key>{{item}}</view>     
       </view>
     </view>
   </view>

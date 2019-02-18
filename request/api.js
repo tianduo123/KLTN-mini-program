@@ -1,7 +1,7 @@
-const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
-const API_IMG = 'http://192.168.8.101/syb/'
-// const API_BASE = 'http://47.107.86.148/syb/children/index.php/Api'
-// const API_IMG = 'http://47.107.86.148/syb/children/'
+// const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
+// const API_IMG = 'http://192.168.8.101/syb/'
+const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
+const API_IMG = 'https://www.shimokeji.cn/syb/'
 const BASE_ID = 5
 let app = getApp()
 //获取openid
@@ -70,7 +70,7 @@ function register(a,b){
 }
 //评论功能
 function comment(a,b,c){
-  return API_BASE + `/course/comment?admin_id=${BASE_ID}&openid=${a}&content=${b}&course_id=${c} `
+  return API_BASE + `/course/comment?admin_id=${BASE_ID}&openid=${a}&content=${b}&course_id=${c}`
 }
 //评论列表
 function commentList(a){
@@ -87,6 +87,22 @@ function rankList(){
 //积分排行榜总榜
 function allRankList(){
   return API_BASE + `/my/more`
+}
+//重置密码
+function resetPsd(a,b){
+  return API_BASE + `/user/forget_password?phone=${a}&password=${b}`
+}
+//成长豆规则
+function getRule(){
+  return API_BASE +  `/my/score_rule`
+}
+//积分兑换列表
+function goodsList(){
+  return API_BASE + `/my/exchange?admin_id=${BASE_ID}`
+}
+//马上兑换
+function getGoods(a,b,c,d){
+  return API_BASE + `/my/rightExchange?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&goods_id=${c}&num=${d}`
 }
 module.exports = {
   API_IMG,
@@ -110,5 +126,9 @@ module.exports = {
   commentList,
   commentZan,
   rankList,
-  allRankList
+  allRankList,
+  resetPsd,
+  getRule,
+  goodsList,
+  getGoods
 }

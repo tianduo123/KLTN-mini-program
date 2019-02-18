@@ -6,10 +6,10 @@
 <view class='name'>{{userInfo.nickName}}</view>
 <form bindsubmit='register'>
   <view class='item'>
-    <input class='inp' placeholder='请输入您的手机号' name='phone'></input>
+    <input class='inp' placeholder='请输入您的手机号' name='phone' value='{{val}}'></input>
   </view>
     <view class='item'>
-    <input class='inp' placeholder='请输入您的密码' name='password'></input>
+    <input class='inp' placeholder='请输入您的密码' name='password' value='{{val}}'></input>
   </view>
   <button class='btn' form-type='submit'>登录</button>
   <view class='forget' bindtap='forget'>忘记密码?</view>
