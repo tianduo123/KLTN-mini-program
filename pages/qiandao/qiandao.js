@@ -34,9 +34,17 @@ Page({
       isShow:true
     })
   },
+  //关闭规则
   close(){
     this.setData({
       isShow:false
+    })
+  },
+  //成长豆明细
+  toScoreDetail(){
+    console.log('成长豆明细')
+    wx.navigateTo({
+      url: '../scroe_detail/score_detail',
     })
   },
 

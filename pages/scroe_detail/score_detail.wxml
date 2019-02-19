@@ -1,0 +1,15 @@
+<!--pages/scroe_detail/score_detail.wxml-->
+<view class='score'>
+  <view style='display:inline-block;margin-left:30rpx;font-size:28rpx;line-height:134rpx'>剩余积分：</view>
+  <view style='display:inline-block;margin-left:30rpx;font-size:60rpx;color:#e62b4a;line-height:134rpx'>666</view>
+</view>
+<view class='line'></view>
+<view class='title'>我的积分记录</view>
+<view class='log'>
+  <view class='item'>
+      <view>2019-2-19</view>
+      <view>+5分</view>
+      <view>签到奖励</view>
+  </view>
+</view>
+

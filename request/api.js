@@ -1,7 +1,7 @@
-// const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
-// const API_IMG = 'http://192.168.8.101/syb/'
-const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
-const API_IMG = 'https://www.shimokeji.cn/syb/'
+const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
+const API_IMG = 'http://192.168.8.101/syb/'
+// const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
+// const API_IMG = 'https://www.shimokeji.cn/syb/'
 const BASE_ID = 5
 let app = getApp()
 //获取openid
@@ -96,6 +96,10 @@ function resetPsd(a,b){
 function getRule(){
   return API_BASE +  `/my/score_rule`
 }
+//获取用户积分
+function getUserScore(a){
+  return API_BASE + `/my/myScore?user_id=${a}`
+}
 //积分兑换列表
 function goodsList(){
   return API_BASE + `/my/exchange?admin_id=${BASE_ID}`
@@ -103,6 +107,10 @@ function goodsList(){
 //马上兑换
 function getGoods(a,b,c,d){
   return API_BASE + `/my/rightExchange?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&goods_id=${c}&num=${d}`
+}
+//兑换记录
+function getLog(a,b){
+  return API_BASE + `/my/exchangeRecord?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
 }
 module.exports = {
   API_IMG,
@@ -130,5 +138,7 @@ module.exports = {
   resetPsd,
   getRule,
   goodsList,
-  getGoods
+  getGoods,
+  getUserScore,
+  getLog
 }

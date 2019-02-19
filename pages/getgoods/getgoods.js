@@ -43,6 +43,16 @@ Page({
                 wx.showToast({
                   title: '兑换成功',
                 })
+                //兑换成功后更新累计兑换数据
+                wx.request({
+                  url: api.goodsList(),
+                  success: (res) => {
+                    console.log(res)
+                    this.setData({
+                      goodsList: res.data.re
+                    })
+                  }
+                })
               }else{
                 wx.showToast({
                   title: res.data.message,

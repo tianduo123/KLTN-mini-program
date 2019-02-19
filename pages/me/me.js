@@ -120,16 +120,26 @@ Page({
         })
       }
     })
-    //从缓存中拿用户积分
-    wx.getStorage({
-      key: 'jifen',
+    //调接口拿用户积分
+    wx.request({
+      url: api.getUserScore(app.globalData.userId),
       success:(res)=>{
         console.log(res)
         this.setData({
-          score:res.data
+          score:res.data.data.score
         })
-      },
+      }
     })
+    //从缓存中拿用户积分
+  //   wx.getStorage({
+  //     key: 'jifen',
+  //     success:(res)=>{
+  //       console.log(res)
+  //       this.setData({
+  //         score:res.data
+  //       })
+  //     },
+  //   })
   },
 
   /**

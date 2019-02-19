@@ -1,0 +1,22 @@
+/* pages/scroe_detail/score_detail.wxss */
+.score{
+  width: 100%;
+  height: 134rpx;
+}
+.line{
+  width: 100%;
+  height: 20rpx;
+  background: #efefee
+}
+.title{
+  margin: 30rpx;
+  font-size: 28rpx;
+}
+.log{
+  box-sizing: border-box;
+  padding: 30rpx;
+  width: 100%;
+}
+.item{
+  font-size:26rpx;
+}

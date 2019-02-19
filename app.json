@@ -16,7 +16,8 @@
     "pages/getgoods/getgoods",
     "pages/record/record",
     "pages/more_rank/more_rank",
-    "pages/reset_psd/reset_psd"
+    "pages/reset_psd/reset_psd",
+    "pages/scroe_detail/score_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

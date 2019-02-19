@@ -1,29 +1,18 @@
-// pages/record/record.js
-let api = require('../../request/api.js')
-let app = getApp()
+// pages/scroe_detail/score_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrl: api.API_IMG
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //兑换记录
-    wx.request({
-      url: api.getLog(app.globalData.openid,app.globalData.userId),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          logList:res.data.re
-        })
-      }
-    })
+
   },
 
   /**
