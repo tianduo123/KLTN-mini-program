@@ -112,6 +112,14 @@ function getGoods(a,b,c,d){
 function getLog(a,b){
   return API_BASE + `/my/exchangeRecord?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
 }
+//用户的积分记录
+function getUserLog(a){
+  return API_BASE + `/my/record?user_id=${a}`
+}
+//签到
+function qiandao(a,b){
+  return API_BASE + `/user/sign?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -140,5 +148,7 @@ module.exports = {
   goodsList,
   getGoods,
   getUserScore,
-  getLog
+  getLog,
+  getUserLog,
+  qiandao
 }

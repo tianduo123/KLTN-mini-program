@@ -7,12 +7,12 @@
     <view style='width:100%;margin-left:480rpx;font-size:28rpx;margin-top:50rpx;position:absolute' bindtap='toScoreDetail'>成长豆明细>></view>
     <view style='font-size:30rpx;font-weight:bold;color:#000000;margin-top:140rpx;width:100%;text-align:center'>
       成长豆：
-      <view style='font-size:32rpx;font-weight:bold;color:#fd4d4a;display:inline-block'>666</view>
+      <view style='font-size:32rpx;font-weight:bold;color:#fd4d4a;display:inline-block'>{{score}}</view>
     </view>
-    <view class='qiandao'>点击签到</view>
+    <view class='{{ status==1?"qiandao2":"qiandao"}}' bindtap='qiandao'>{{ status==1?"已签到":"点击签到"}}</view>
     <view style='font-size:26rpx;width:100%;text-align:center'>
       已连续签到
-      <view style='display:inline-block;color:#ff394c'>3</view>
+      <view style='display:inline-block;color:#ff394c'>{{qiandaoInfo.sign_day}}</view>
       天
     </view>
     <view class='wrap'>
@@ -90,9 +90,8 @@
         <image src='../../icon/rule2.png'></image>
       </view>
       <view class='content_wrap_bottom'>
-        <view wx:for='{{ruleList}}' wx:key>{{item}}</view>     
+        <view wx:for='{{ruleList}}' wx:key>{{item}}</view>   
       </view>
     </view>
   </view>
-
 </view>

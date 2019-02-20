@@ -70,6 +70,17 @@ page{
   margin: 30rpx auto 20rpx;
   border-radius: 50rpx
 }
+.qiandao2{
+  width: 400rpx;
+  height: 74rpx;
+  text-align: center;
+  line-height: 74rpx;
+  background: #cccccc;
+  color: #ffffff;
+  font-size: 30rpx;
+  margin: 30rpx auto 20rpx;
+  border-radius: 50rpx
+}
 .wrap{
   width: 100%;
   height: 170rpx;

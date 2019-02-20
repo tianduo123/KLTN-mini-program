@@ -1,4 +1,6 @@
 // pages/scroe_detail/score_detail.js
+let app = getApp()
+let api = require('../../request/api.js')
 Page({
 
   /**
@@ -10,9 +12,18 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
-   */
+   */ 
   onLoad: function (options) {
-
+    //发请求获取用户积分记录
+    wx.request({
+      url: api.getUserLog(app.globalData.userId),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          logList:res.data.scoreRecord
+        })
+      }
+    })
   },
 
   /**

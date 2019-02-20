@@ -14,7 +14,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //获取用户积分
+    wx.request({
+      url: api.getUserScore(app.globalData.userId),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          score:res.data.data.score
+        })
+      }
+    })
   },
   //成长豆规则
   rule(){
@@ -47,7 +56,34 @@ Page({
       url: '../scroe_detail/score_detail',
     })
   },
-
+  //签到
+  qiandao(){
+    console.log('签到')
+    wx.request({
+      url: api.qiandao(app.globalData.openid,app.globalData.userId),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          qiandaoInfo:res.data.re,
+          status:res.data.status
+        })
+        wx.setStorage({
+          key: 'day',
+          data: res.data.re.sign_day,
+          success:()=>{
+            console.log('存储成功')
+          }
+        })
+        wx.setStorage({
+          key: 'status',
+          data: res.data.status,
+          success:()=>{
+            console.log('状态存到缓存')
+          }
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -59,7 +95,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getStorage({
+      key: 'day',
+      success: function(res) {
+        console.log(res)
+      },
+    })
+    wx.getStorage({
+      key: 'status',
+      success: function(res) {
+        console.log(res)
+      },
+    })
   },
 
   /**
