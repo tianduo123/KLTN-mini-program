@@ -9,39 +9,39 @@
       成长豆：
       <view style='font-size:32rpx;font-weight:bold;color:#fd4d4a;display:inline-block'>{{score}}</view>
     </view>
-    <view class='{{ status==1?"qiandao2":"qiandao"}}' bindtap='qiandao'>{{ status==1?"已签到":"点击签到"}}</view>
+    <view class='{{isqiandao?"qiandao2":"qiandao"}}' bindtap='qiandao'>{{isqiandao?"已签到":"点击签到"}}</view>
     <view style='font-size:26rpx;width:100%;text-align:center'>
       已连续签到
-      <view style='display:inline-block;color:#ff394c'>{{sign_day}}</view>
+      <view style='display:inline-block;color:#ff394c'>{{days}}</view>
       天
     </view>
     <view class='wrap'>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=1?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第一天</view>
       </view>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=2?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第二天</view>
       </view>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=3?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第三天</view>
       </view>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=4?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第四天</view>
       </view>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=5?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第五天</view>
       </view>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=6?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第六天</view>
       </view>
       <view class='item'>
-        <image src='../../icon/isqd.png' style='width:68rpx;height:92rpx'></image>
+        <image src='{{days>=7?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
         <view>第七天</view>
       </view>
     </view>

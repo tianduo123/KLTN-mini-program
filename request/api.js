@@ -1,5 +1,7 @@
+//本地服务器地址
 const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
 const API_IMG = 'http://192.168.8.101/syb/'
+//服务器地址
 // const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
 // const API_IMG = 'https://www.shimokeji.cn/syb/'
 const BASE_ID = 5
@@ -120,6 +122,10 @@ function getUserLog(a){
 function qiandao(a,b){
   return API_BASE + `/user/sign?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
 }
+//判断用户是否签到
+function isQiandao(a,b){
+  return API_BASE + `/user/is_sign?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -150,5 +156,6 @@ module.exports = {
   getUserScore,
   getLog,
   getUserLog,
-  qiandao
+  qiandao,
+  isQiandao
 }

@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isShow:false
+    isShow:false,
+    isqiandao:false
   },
 
   /**
@@ -62,25 +63,34 @@ Page({
     wx.request({
       url: api.qiandao(app.globalData.openid,app.globalData.userId),
       success:(res)=>{
+        if(res.data.status==1){
+          this.setData({
+            days: res.data.re.sign_day,
+            isqiandao: true,
+          })
+          //将签到状态存入缓存，onShow取缓存用于判断显示签到与红包样式
+          wx.setStorage({
+            key: 'isqiandao',
+            data: res.data.status,
+            success: function (res) {
+              console.log('存储签到状态成功')
+            },
+          })
+          //将签到天数存入缓存，onShow取缓存用于显示连续签到天数
+          wx.setStorage({
+            key: 'days',
+            data: res.data.re.sign_day,
+            success: function (res) {
+              console.log('存储签到天数成功')
+            },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        }else{
+          console.log('今日已签到')
+        }
         console.log(res)
-        this.setData({
-          qiandaoInfo:res.data.re,
-          status:res.data.status
-        })
-        wx.setStorage({
-          key: 'day',
-          data: res.data.re.sign_day,
-          success:()=>{
-            console.log('存储成功')
-          }
-        })
-        wx.setStorage({
-          key: 'status',
-          data: res.data.status,
-          success:()=>{
-            console.log('状态存到缓存')
-          }
-        })
+      
       }
     })
   },
@@ -95,23 +105,51 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //从缓存中拿签到状态
     wx.getStorage({
-      key: 'day',
+      key: 'isqiandao',
       success:(res)=>{
         console.log(res)
-        this.setData({
-          sign_day:res.data
-        })
+        if(res.data==0||1){
+          this.setData({
+            isqiandao:true
+          })
+        }
       },
+      fail: function(res) {},
+      complete: function(res) {},
     })
+    //从缓存中拿连续签到天数
     wx.getStorage({
-      key: 'status',
+      key: 'days',
       success:(res)=>{
         console.log(res)
         this.setData({
-          status:res.data
+          days:res.data
         })
       },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+    //每次进入判断用户是否签到
+    wx.request({
+      url: api.isQiandao(app.globalData.openid,app.globalData.userId),
+      success:(res)=>{
+        console.log(res)
+        if(res.data.status==0){
+          //今日未签到
+          this.setData({
+            isqiandao:false
+          })
+        }
+        else{
+          console.log('今日已签到')
+          this.setData({
+            isqiandao:true
+          })
+          
+        }
+      }
     })
   },
 
