@@ -12,7 +12,7 @@
     <view class='{{ status==1?"qiandao2":"qiandao"}}' bindtap='qiandao'>{{ status==1?"已签到":"点击签到"}}</view>
     <view style='font-size:26rpx;width:100%;text-align:center'>
       已连续签到
-      <view style='display:inline-block;color:#ff394c'>{{qiandaoInfo.sign_day}}</view>
+      <view style='display:inline-block;color:#ff394c'>{{sign_day}}</view>
       天
     </view>
     <view class='wrap'>

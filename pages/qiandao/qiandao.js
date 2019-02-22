@@ -97,14 +97,20 @@ Page({
   onShow: function () {
     wx.getStorage({
       key: 'day',
-      success: function(res) {
+      success:(res)=>{
         console.log(res)
+        this.setData({
+          sign_day:res.data
+        })
       },
     })
     wx.getStorage({
       key: 'status',
-      success: function(res) {
+      success:(res)=>{
         console.log(res)
+        this.setData({
+          status:res.data
+        })
       },
     })
   },
