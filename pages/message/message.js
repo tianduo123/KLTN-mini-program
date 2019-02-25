@@ -1,11 +1,13 @@
 // pages/message/message.js
+let api = require('../../request/api.js')
+let app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    val:''
   },
 
   /**
@@ -14,7 +16,40 @@ Page({
   onLoad: function (options) {
 
   },
-
+  //获取用户输入数据
+  getVal(e){
+    console.log(e)
+    this.setData({
+      userVal:e.detail.value
+    })
+  },
+  //提交建议
+  submit(){
+    console.log('提交',this.data.userVal)
+    wx.request({
+      url: api.submit(app.globalData.openid,app.globalData.userId,this.data.userVal),
+      success:(res)=>{
+        console.log(res)
+       if(res.data.status==1){
+         //提交成功
+         wx.showToast({
+           title: '提交成功',
+           success:()=>{
+             this.setData({
+               val:'',
+               userVal:''
+             })
+           }
+         })
+       }else{
+         wx.showToast({
+           title: res.data.msg,
+           icon:'none'
+         })
+       }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

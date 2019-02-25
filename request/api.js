@@ -126,6 +126,10 @@ function qiandao(a,b){
 function isQiandao(a,b){
   return API_BASE + `/user/is_sign?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
 }
+//用户提交建议
+function submit(a,b,c){
+  return API_BASE + `/comment/comment?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&content=${c}`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -157,5 +161,6 @@ module.exports = {
   getLog,
   getUserLog,
   qiandao,
-  isQiandao
+  isQiandao,
+  submit
 }

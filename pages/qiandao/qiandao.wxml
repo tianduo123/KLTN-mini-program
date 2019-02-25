@@ -53,8 +53,8 @@
     </view>
     <view class='work'>
       <view class='left'>
-        <view>转发好友</view>
-        <view style='color:#999999'>分享小程序给好友</view>
+        <view>分享小程序</view>
+        <view style='color:#999999'>分享小程序到任意群</view>
       </view>
       <view class='right'>
         <view class='btn'>去完成</view>
@@ -63,7 +63,7 @@
     <view class='work'>
       <view class='left'>
         <view>推荐人</view>
-        <view style='color:#999999'>预约页面填写推荐人手机号：500成长豆</view>
+        <view style='color:#999999'>注册页面填写推荐人手机号：500成长豆</view>
       </view>
       <view class='right'>
         <view class='btn'>去完成</view>
@@ -75,7 +75,7 @@
         <view style='color:#999999'>1条10成长豆(20字以上)，一经采纳获赠200成长豆</view>
       </view>
       <view class='right'>
-        <view class='btn'>去完成</view>
+        <view class='btn' bindtap='toMsg'>去完成</view>
       </view>
     </view>
   </view>

@@ -13,5 +13,11 @@
 }
 .btn{
   width: 80%;
-  height: 80rpx
+  height: 80rpx;
+  margin: 150rpx auto;
+  background: #ff6633;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+  border-radius: 10rpx
 }
