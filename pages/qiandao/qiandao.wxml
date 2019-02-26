@@ -57,7 +57,7 @@
         <view style='color:#999999'>分享小程序到任意群</view>
       </view>
       <view class='right'>
-        <view class='btn'>去完成</view>
+        <button class='btn1' open-type='share'>去完成</button>
       </view>
     </view>
     <view class='work'>

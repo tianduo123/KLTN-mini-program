@@ -64,6 +64,9 @@ Page({
       url: api.qiandao(app.globalData.openid,app.globalData.userId),
       success:(res)=>{
         if(res.data.status==1){
+          wx.showToast({
+            title: '签到成功',
+          })
           this.setData({
             days: res.data.re.sign_day,
             isqiandao: true,
@@ -86,6 +89,16 @@ Page({
             fail: function (res) { },
             complete: function (res) { },
           })
+          //更新用户成长豆
+          wx.request({
+            url: api.getUserScore(app.globalData.userId),
+            success: (res) => {
+              console.log(res)
+              this.setData({
+                score: res.data.data.score
+              })
+            }
+          })
         }else{
           console.log('今日已签到')
         }
@@ -100,6 +113,7 @@ Page({
       url: '../message/message',
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -191,6 +205,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log('转发啦哈哈哈！！！')
   }
 })

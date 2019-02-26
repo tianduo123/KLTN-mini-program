@@ -46,6 +46,18 @@ page{
   background: #fd384e;
   color: #ffffff;
 }
+.btn1{
+  width: 123rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  background: #fd384e;
+  color: #ffffff;
+  font-size: 26rpx;
+  /* 去除button默认样式 */
+  padding: 0
+}
 .box{
   position: absolute;
   top: 0;
