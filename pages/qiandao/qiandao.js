@@ -204,7 +204,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (event) {
+    console.log(event)
     console.log('转发啦哈哈哈！！！')
+    // wx.showShareMenu({
+    //   withShareTicket: true
+    // })
+    //监听用户分享，调取接口获得积分
+    wx.request({
+      url: api.share(app.globalData.openid,app.globalData.userId),
+      success:(res)=>{
+        console.log(res)
+      }
+    })
   }
 })

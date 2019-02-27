@@ -130,6 +130,10 @@ function isQiandao(a,b){
 function submit(a,b,c){
   return API_BASE + `/comment/comment?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&content=${c}`
 }
+//分享加积分
+function share(a,b){
+  return API_BASE + `/my/share_score?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&type=0`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -162,5 +166,6 @@ module.exports = {
   getUserLog,
   qiandao,
   isQiandao,
-  submit
+  submit,
+  share
 }
