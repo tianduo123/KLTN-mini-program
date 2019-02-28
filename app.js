@@ -48,7 +48,7 @@ App({
     userInfo: null,
     appid: 'wx9e1b7369105e9c19',
     secret:'5acd0b38832c32ab1cc42ed71d43cfee',
-    openid:'',
+    openid:'', 
     userId:''
   }
 })

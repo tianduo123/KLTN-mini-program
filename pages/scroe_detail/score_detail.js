@@ -24,6 +24,16 @@ Page({
         })
       }
     })
+    //获取用户积分
+    wx.request({
+      url: api.getUserScore(app.globalData.userId),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          score:res.data.data.score
+        })
+      }
+    })
   },
 
   /**

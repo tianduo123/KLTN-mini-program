@@ -120,7 +120,6 @@ Page({
   onReady: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -171,6 +170,16 @@ Page({
         }
       }
     })
+    //每次需重新获取用户成长豆
+    wx.request({
+      url: api.getUserScore(app.globalData.userId),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          score: res.data.data.score
+        })
+      }
+    })
   },
 
   /**
@@ -207,9 +216,6 @@ Page({
   onShareAppMessage: function (event) {
     console.log(event)
     console.log('转发啦哈哈哈！！！')
-    // wx.showShareMenu({
-    //   withShareTicket: true
-    // })
     //监听用户分享，调取接口获得积分
     wx.request({
       url: api.share(app.globalData.openid,app.globalData.userId),
