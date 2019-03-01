@@ -34,6 +34,5 @@
   text-align: center;
   line-height: 70rpx;
   font-size: 26rpx;
-  margin-top: 40rpx;
-  margin-bottom: 100rpx
+  margin-top: 100rpx;
 }

@@ -1,6 +1,8 @@
 /* pages/me/me.wxss */
 page{
-  background: #f5f5f5
+  background: #f5f5f5;
+  box-sizing: border-box;
+  padding-bottom: 100rpx
 }
 .bg{
   width: 100%;
@@ -67,13 +69,12 @@ page{
   width: 90%;
   background: #ffffff;
   margin-left: 5%;
-  position: absolute;
-  top: 550rpx;
-  /* display: flex; */
+  /* position: absolute; */
+  /* top: 550rpx; */
   border-radius: 5%;
   overflow: hidden;
-  /* flex-direction: column; */
-  margin-bottom: 100rpx
+  margin-top: 200rpx;
+  /* margin-bottom: 80rpx */
 }
 .title{
   width: 100%;

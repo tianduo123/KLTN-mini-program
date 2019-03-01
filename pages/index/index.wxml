@@ -60,8 +60,8 @@
   <view class='icon_img'>
     <image src='../../icon/icon.jpg' style='width:100%;height:100%'></image>
   </view>
-  <view>快乐童年</view>
-  <view>提供技术支持</view>
+  <view style='margin-top:15rpx'>快乐童年提供技术支持</view>
+  <!-- <view></view> -->
 </view>
 
 <button class='wrap' style='width:100%;height:{{Height*2}}rpx;opacity:0' open-type='getUserInfo' bindgetuserinfo='getUserInfo' hidden='{{isShow}}'>

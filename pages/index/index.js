@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('jahsjakh')
     //获取用户经纬度（显示附近商家需要）
     wx.getLocation({
       success: function(res) {
@@ -122,6 +123,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('onShow')
     //获取首页功能区分类
     wx.request({
       url: api.getFunctional(),

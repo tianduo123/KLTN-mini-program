@@ -17,7 +17,7 @@ page{
   width: 700rpx;
   height: 600rpx;
   background: #ffffff;
-  margin: 10rpx auto 180rpx;
+  margin: 10rpx auto 100rpx;
   border-radius: 20rpx;
   box-sizing: border-box;
   padding: 30rpx
