@@ -28,7 +28,8 @@
        <view class='scroll_item'>
         <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx'></image>
         <view>商家列表</view>
-      </view> <view class='scroll_item'>
+      </view>
+       <view class='scroll_item'>
         <image src='../../image/banner3.jpg' style='width:211rpx;height:140rpx'></image>
         <view>商家列表</view>
       </view>

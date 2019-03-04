@@ -64,10 +64,36 @@ Page({
     })
   },
   //附近商家
+
   tonear(){
-    wx.navigateTo({
-      url: '../near/near',
+ 
+    //获取用户的授权状态
+    wx.getSetting({
+      success:(res)=>{
+        //判断scope.userLocation是否为true
+        console.log(res)
+        if(res.authSetting["scope.userLocation"]){
+          //如果授权过直接跳转附近商家列表
+          wx.navigateTo({
+            url: '../near/near',
+          })
+        }else{
+          //用户没有授权，引导用户授权
+          wx.openSetting({
+            success: (res) => {
+              console.log(res)
+              wx.getLocation({
+                success: function (res) {
+                  console.log(res)
+                  
+                },
+              })
+            }
+          })
+        }
+      }
     })
+ 
   },
   //获取用户信息
   getUserInfo(res){
