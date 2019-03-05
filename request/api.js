@@ -1,9 +1,9 @@
 //本地服务器地址
-const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
-const API_IMG = 'http://192.168.8.101/syb/'
+// const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
+// const API_IMG = 'http://192.168.8.101/syb/'
 //服务器地址
-// const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
-// const API_IMG = 'https://www.shimokeji.cn/syb/'
+const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
+const API_IMG = 'https://www.shimokeji.cn/syb/'
 const BASE_ID = 5
 let app = getApp()
 //获取openid
@@ -134,6 +134,14 @@ function submit(a,b,c){
 function share(a,b){
   return API_BASE + `/my/share_score?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&type=0`
 }
+//附近商家
+function nearList(a,b){
+  return API_BASE + `/address/fiveRange?wei=${a}&jing=${b}&admin_id=${BASE_ID}`
+}
+//商家留言板
+function message(){
+  return API_BASE + `/Comment/commentList?admin_id=${BASE_ID}`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -167,5 +175,7 @@ module.exports = {
   qiandao,
   isQiandao,
   submit,
-  share
+  share,
+  nearList,
+  message
 }

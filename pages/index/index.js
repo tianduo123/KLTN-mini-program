@@ -17,8 +17,22 @@ Page({
     console.log('jahsjakh')
     //获取用户经纬度（显示附近商家需要）
     wx.getLocation({
-      success: function(res) {
+      success:(res)=>{
         console.log(res)
+        this.setData({
+          lat:res.latitude,
+          lon:res.longitude
+        })
+        //拿到用户经纬度获取附近商家列表
+        wx.request({
+          url:api.nearList(res.latitude,res.longitude),
+          success:(res)=>{
+            console.log(res)
+            this.setData({
+              near:res.data
+            })
+          }
+        }) 
       },
     })
     //获取屏幕高度（显示用户授权蒙层需要）
@@ -64,7 +78,6 @@ Page({
     })
   },
   //附近商家
-
   tonear(){
  
     //获取用户的授权状态
@@ -75,7 +88,7 @@ Page({
         if(res.authSetting["scope.userLocation"]){
           //如果授权过直接跳转附近商家列表
           wx.navigateTo({
-            url: '../near/near',
+            url: `../near/near?lat=${this.data.lat}&lon=${this.data.lon}`,
           })
         }else{
           //用户没有授权，引导用户授权
@@ -83,9 +96,26 @@ Page({
             success: (res) => {
               console.log(res)
               wx.getLocation({
-                success: function (res) {
+                success:(res)=>{
                   console.log(res)
-                  
+                  this.setData({
+                    lat:res.latitude,
+                    lon:res.longitude
+                  })
+                  wx.navigateTo({
+                    url: `../near/near?lat=${res.latitude}&lon=${res.longitude}`,
+                  })
+                  //拿到用户经纬度获取附近商家列表
+                  wx.request({
+                    url: api.nearList(res.latitude, res.longitude),
+                    success: (res) => {
+                      console.log(res)
+                      this.setData({
+                        near: res.data
+                      })
+                      console.log(this.data.near)
+                    }
+                  }) 
                 },
               })
             }
@@ -160,6 +190,7 @@ Page({
         })
       }
     })
+ 
   },
 
   /**

@@ -1,18 +1,29 @@
 // pages/near/near.js
+let app = getApp()
+let api = require('../../request/api.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    imgUrl:api.API_IMG
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    wx.request({
+      url: api.nearList(options.lat,options.lon),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          nearList:res.data
+        })
+      }
+    })
   },
 
   /**

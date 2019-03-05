@@ -85,11 +85,33 @@ page{
   border-bottom: 1px solid #eeeeee
 }
 .content{
+  width: 100%;
+  background: #fff;
+  height: 500rpx;
+  box-sizing: border-box;
+  padding: 30rpx;
+  overflow: auto
+}
+.item-top{
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.item-bot{
+  font-size: 28rpx;
+  margin-bottom: 10rpx
+}
+.item{
+  border-bottom: 1px solid #eeeeee;
+  /* margin-top: 20rpx; */
+  /* margin-bottom: 10rpx */
+}
+/* .content{
   box-sizing: border-box;
   padding-left: 30rpx;
   padding-right: 30rpx;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 .content_item{
   width: 100%;
@@ -108,7 +130,7 @@ page{
   width: 20%;
   font-size: 28rpx;
   text-align: center
-}
+} */
 .avatar2{
   width: 70rpx;
   height: 70rpx;

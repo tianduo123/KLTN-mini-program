@@ -28,6 +28,16 @@ Page({
         })
       }
     })
+    //留言板
+    wx.request({
+      url: api.message(),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          msgList: res.data.comment
+        })
+      }
+    })
   },
   //查看全部排行榜
   toMore(){
@@ -99,7 +109,11 @@ Page({
       })
     }
   },
-
+  toMessage(){
+    wx.navigateTo({
+      url: '../message/message',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
