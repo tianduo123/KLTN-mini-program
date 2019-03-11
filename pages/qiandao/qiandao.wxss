@@ -4,11 +4,12 @@ page{
   box-sizing: border-box;
   padding: 1rpx
 }
+
 .top{
   width: 700rpx;
   height: 600rpx;
   background: #ffffff;
-  margin: 180rpx auto 20rpx;
+  margin: 50rpx auto 20rpx;
   border-radius: 20rpx;
   box-sizing: border-box;
   padding: 30rpx;
@@ -58,15 +59,16 @@ page{
   /* 去除button默认样式 */
   padding: 0
 }
-.box{
-  position: absolute;
-  top: 0;
-  height: 350rpx;
-  width: 100%
-}
 .rule{
   position: absolute;
   top: 20rpx;
+  right: 0;
+  width: 160rpx;
+  height: 50rpx
+}
+.rule2{
+  position: absolute;
+  top: 100rpx;
   right: 0;
   width: 160rpx;
   height: 50rpx
@@ -143,5 +145,39 @@ page{
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  
+}
+.top-btn{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee
+}
+.btn-l{
+ border-right: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  font-size:  28rpx;
+  width: 50%;
+  justify-content: space-around
+
+}
+.btn-r{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  width: 50%
+}
+.userInfo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column
+}
+.avatar{
+  width:120rpx;
+  height:120rpx;
+  border-radius:50%;
 }

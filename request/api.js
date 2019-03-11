@@ -1,9 +1,9 @@
 //本地服务器地址
-// const API_BASE = 'http://192.168.8.101/syb/index.php/Api'
-// const API_IMG = 'http://192.168.8.101/syb/'
+const API_BASE = 'http://192.168.0.101/syb/index.php/Api'
+const API_IMG = 'http://192.168.0.101/syb/'
 //服务器地址
-const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
-const API_IMG = 'https://www.shimokeji.cn/syb/'
+// const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
+// const API_IMG = 'https://www.shimokeji.cn/syb/'
 const BASE_ID = 5
 let app = getApp()
 //获取openid
@@ -142,6 +142,14 @@ function nearList(a,b){
 function message(){
   return API_BASE + `/Comment/commentList?admin_id=${BASE_ID}`
 }
+//成长豆任务是否完成
+function isDone(a,b){
+  return API_BASE + `/my/unclaimed?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
+}
+//领取任务积分
+function getScore(a,b,c,d){
+  return API_BASE + `/my/getScore?adimin_id=${BASE_ID}&openid=${a}&user_id=${b}&score_num=${c}&type=${d}`
+}
 module.exports = {
   API_IMG,
   getBanner,
@@ -177,5 +185,7 @@ module.exports = {
   submit,
   share,
   nearList,
-  message
+  message,
+  isDone,
+  getScore
 }

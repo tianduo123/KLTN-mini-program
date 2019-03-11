@@ -52,7 +52,7 @@
         "selectedIconPath": "./icon/sele_lianxi.png"
       },
       {
-        "pagePath": "pages/me/me",
+        "pagePath": "pages/qiandao/qiandao",
         "text": "我的",
         "iconPath": "./icon/me.png",
         "selectedIconPath": "./icon/sele_me.png"

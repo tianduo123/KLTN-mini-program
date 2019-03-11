@@ -1,97 +1,120 @@
 <!--pages/qiandao/qiandao.wxml-->
-<view style='overflow-x:hidden;width:750rpx'>
+<!-- <view> -->
 
-  <image src='../../icon/box.png' class='box'></image>
   <image src='../../icon/rule.png' class='rule' bindtap='rule'></image>
-  <view class='top'>
-    <view style='width:100%;margin-left:480rpx;font-size:28rpx;margin-top:50rpx;position:absolute' bindtap='toScoreDetail'>成长豆明细>></view>
-    <view style='font-size:30rpx;font-weight:bold;color:#000000;margin-top:140rpx;width:100%;text-align:center'>
+  <image src='../../icon/detail.png' class='rule2' bindtap='toScoreDetail'></image>
+<view class='userInfo'>
+  <image src='{{userInfo.avatarUrl}}' class='avatar'>
+  </image>
+  <view style='font-size:28rpx;color:#eeeeee;margin-top:10rpx'>{{userInfo.nickName}}</view>
+   <view style='font-size:30rpx;font-weight:bold;color:#ffffff;margin-top:20rpx;width:100%;text-align:center'>
       成长豆：
-      <view style='font-size:32rpx;font-weight:bold;color:#fd4d4a;display:inline-block'>{{score}}</view>
+      <view style='font-size:32rpx;font-weight:bold;color:#FFFF00;display:inline-block'>{{score}}</view>
     </view>
-    <view class='{{isqiandao?"qiandao2":"qiandao"}}' bindtap='qiandao'>{{isqiandao?"已签到":"点击签到"}}</view>
-    <view style='font-size:26rpx;width:100%;text-align:center'>
-      已连续签到
-      <view style='display:inline-block;color:#ff394c'>{{days}}</view>
-      天
+</view>
+
+<view class='top'>
+  <view class='top-btn'>
+    <view class='btn-l' bindtap='jifen'>
+      <view style='display: flex;align-items: center'>
+        <image src='../../icon/jifen.png' style='width:45rpx;height:45rpx;margin-right:20rpx'></image>
+        <view>积分兑换</view>
+      </view>
     </view>
-    <view class='wrap'>
-      <view class='item'>
-        <image src='{{days>=1?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第一天</view>
-      </view>
-      <view class='item'>
-        <image src='{{days>=2?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第二天</view>
-      </view>
-      <view class='item'>
-        <image src='{{days>=3?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第三天</view>
-      </view>
-      <view class='item'>
-        <image src='{{days>=4?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第四天</view>
-      </view>
-      <view class='item'>
-        <image src='{{days>=5?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第五天</view>
-      </view>
-      <view class='item'>
-        <image src='{{days>=6?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第六天</view>
-      </view>
-      <view class='item'>
-        <image src='{{days>=7?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
-        <view>第七天</view>
+    <view class='btn-r' bindtap='toMore'>
+      <view style='display: flex;align-items: center'>
+        <image src='../../icon/paihang.svg' style='width:45rpx;height:45rpx;margin-right:20rpx'></image>
+        <view>成长豆排行</view>
       </view>
     </view>
   </view>
-
-  <view class='bottom'>
-    <view class='title'>
-      <view style='display:inline-block;margin-left:20rpx'>成长豆任务</view>
-    </view>
-    <view class='work'>
-      <view class='left'>
-        <view>分享小程序</view>
-        <view style='color:#999999'>分享小程序到任意群</view>
-      </view>
-      <view class='right'>
-        <button class='btn1' open-type='share'>去完成</button>
-      </view>
-    </view>
-    <view class='work'>
-      <view class='left'>
-        <view>推荐人</view>
-        <view style='color:#999999'>注册页面填写推荐人手机号：500成长豆</view>
-      </view>
-      <view class='right'>
-        <view class='btn'>去完成</view>
-      </view>
-    </view>
-    <view class='work'>
-      <view class='left'>
-        <view>提建议</view>
-        <view style='color:#999999'>1条10成长豆(20字以上)，一经采纳获赠200成长豆</view>
-      </view>
-      <view class='right'>
-        <view class='btn' bindtap='toMsg'>去完成</view>
-      </view>
-    </view>
+  <!-- -->
+  <view class='{{isqiandao?"qiandao2":"qiandao"}}' bindtap='qiandao'>{{isqiandao?"已签到":"点击签到"}}</view>
+  <view style='font-size:26rpx;width:100%;text-align:center'>
+    已连续签到
+    <view style='display:inline-block;color:#ff394c'>{{days}}</view>
+    天
   </view>
-
-  <!-- 积分规则 -->
-  <view class='rule_wrap' style='width:100%;height:100%;' wx:if='{{isShow}}'>
-    <view style='width:100%;text-align:right;margin-top:150rpx;margin-bottom:30rpx;'>
-      <image src='../../icon/close.svg' style='margin-right:50rpx;width:60rpx;height:60rpx' bindtap='close'></image>
+  <view class='wrap'>
+    <view class='item'>
+      <image src='{{days>=1?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第一天</view>
     </view>
-    <view class='content_wrap'>
-      <view class='content_wrap_top'>
-        <image src='../../icon/rule2.png'></image>
-      </view>
-      <view class='content_wrap_bottom'>
-        <view wx:for='{{ruleList}}' wx:key>{{item}}</view>   
-      </view>
+    <view class='item'>
+      <image src='{{days>=2?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第二天</view>
+    </view>
+    <view class='item'>
+      <image src='{{days>=3?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第三天</view>
+    </view>
+    <view class='item'>
+      <image src='{{days>=4?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第四天</view>
+    </view>
+    <view class='item'>
+      <image src='{{days>=5?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第五天</view>
+    </view>
+    <view class='item'>
+      <image src='{{days>=6?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第六天</view>
+    </view>
+    <view class='item'>
+      <image src='{{days>=7?"../../icon/isqd.png":"../../icon/qd.png"}}' style='width:68rpx;height:92rpx'></image>
+      <view>第七天</view>
     </view>
   </view>
 </view>
+
+<view class='bottom'>
+  <view class='title'>
+    <view style='display:inline-block;margin-left:20rpx'>成长豆任务</view>
+  </view>
+  <view class='work'>
+    <view class='left'>
+      <view>分享小程序</view>
+      <view style='color:#999999'>分享小程序到任意群</view>
+    </view>
+    <view class='right'>
+      <button class='btn1' wx:if='{{share.score}}' bindtap='getScore1'>去领取</button>
+      <button class='btn1'  open-type='{{share?share:""}}' wx:else bindtap='{{!share?complete1:""}}'>去完成</button>
+    </view>
+  </view>
+  <view class='work'>
+    <view class='left'>
+      <view>推荐人</view>
+      <view style='color:#999999'>注册页面填写推荐人手机号：500成长豆</view>
+    </view>
+    <view class='right'>
+      <view class='btn' wx:if='{{tuijian.score}}' bindtap='getScore2'>去领取</view>
+      <view class='btn' wx:else bindtap='complete2'>去完成</view>
+    </view>
+  </view>
+  <view class='work'>
+    <view class='left'>
+      <view>提建议</view>
+      <view style='color:#999999'>1条10成长豆(20字以上)，一经采纳获赠200成长豆</view>
+    </view>
+    <view class='right'>
+      <view class='btn' bindtap='getScore3' wx:if='{{comment.score}}'>去领取</view>
+      <view class='btn' bindtap='toMsg' wx:else>去完成</view>
+    </view>
+  </view>
+</view>
+
+<!-- 积分规则 -->
+<view class='rule_wrap' style='width:100%;height:100%;' wx:if='{{isShow}}'>
+  <view style='width:100%;text-align:right;margin-top:150rpx;margin-bottom:30rpx;'>
+    <image src='../../icon/close.svg' style='margin-right:50rpx;width:60rpx;height:60rpx' bindtap='close'></image>
+  </view>
+  <view class='content_wrap'>
+    <view class='content_wrap_top'>
+      <image src='../../icon/rule2.png'></image>
+    </view>
+    <view class='content_wrap_bottom'>
+      <view wx:for='{{ruleList}}' wx:key>{{item}}</view>
+    </view>
+  </view>
+</view>
+<!-- </view> -->

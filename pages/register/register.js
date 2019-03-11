@@ -54,7 +54,7 @@ Page({
             success: () => {
               setTimeout(() => {
                 wx.switchTab({
-                  url: '../me/me',
+                  url: '../qiandao/qiandao',
                 })
               }, 1500)
             }
