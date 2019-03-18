@@ -14,7 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      userId:options.userId
+    })
   },
   //获取用户输入数据
   getVal(e){
@@ -27,7 +30,7 @@ Page({
   submit(){
     console.log('提交',this.data.userVal)
     wx.request({
-      url: api.submit(app.globalData.openid,app.globalData.userId,this.data.userVal),
+      url: api.submit(app.globalData.openid,this.data.userId,this.data.userVal),
       success:(res)=>{
         console.log(res)
        if(res.data.status==1){
@@ -39,6 +42,11 @@ Page({
                val:'',
                userVal:''
              })
+             setTimeout(()=>{
+               wx.switchTab({
+                 url: '../qiandao/qiandao',
+               })
+             },1500)
            }
          })
        }else{

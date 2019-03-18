@@ -1,8 +1,9 @@
 <!--pages/video_detail/video_detail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 
-<video controls class='video' src='{{video_url+videoUrl}}'></video>
-<view class='title'>视频标题</view>
+<video controls class='video' src='{{videoUrl}}'></video>
+<!-- <view class='title'>{{detail.}}</view> -->
+<view class='title2'>上传时间：{{detail.update_time}}</view>
 <view class='line'></view>
 <view class='wxParse'>
   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
@@ -53,9 +54,13 @@
     <view class='bottom'>{{item.content}}</view>
   </view>
 </view>
-<view class='comment'>
+<!-- <view class='comment'>
   <view class='inp'>
   <textarea class='{{system=="ios"?"inp2":"inp3"}}' placeholder='我要评论' bindinput='getVal' value='{{val}}'></textarea>
   </view>
   <view class='button' bindtap='comment'>评论</view>                    
+</view> -->
+<view class='comment'>
+  <input placeholder='我要评论' bindinput='getVal' value='{{val}}' style='font-size:28rpx'></input>
+  <view class='button' bindtap='comment'>评论</view>
 </view>

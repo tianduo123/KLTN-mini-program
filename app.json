@@ -22,12 +22,12 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "快乐童年",
+    "navigationBarTitleText": "生员宝",
     "navigationBarTextStyle": "black"
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序附近商家及地图导航的效果展示"
+      "desc": "仅用于在您面前展示附近的教育机构"
     }
   },
   "tabBar": {

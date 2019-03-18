@@ -14,6 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      userId:options.userId
+    })
     //获取兑换商品列表
     wx.request({
       url: api.goodsList(),
@@ -36,7 +40,7 @@ Page({
           //点击了确定，调兑换接口
           console.log('兑换')
           wx.request({
-            url: api.getGoods(app.globalData.openid,app.globalData.userId,e.currentTarget.dataset.id,e.currentTarget.dataset.num),
+            url: api.getGoods(app.globalData.openid,this.data.userId,e.currentTarget.dataset.id,e.currentTarget.dataset.num),
             success:(res)=>{
               console.log(res)
               if(res.data.status==1){
@@ -71,7 +75,7 @@ Page({
   //兑换记录
   torecord(){
     wx.navigateTo({
-      url: '../record/record',
+      url: `../record/record?userId=${this.data.userId}`,
     })
   },
 

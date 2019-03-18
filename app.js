@@ -43,11 +43,12 @@ App({
         }
       }
     })
+    
   },
   globalData: {
     userInfo: null,
-    appid: 'wx9e1b7369105e9c19',
-    secret:'5acd0b38832c32ab1cc42ed71d43cfee',
+    appid: 'wx66314928577b3667',
+    secret:'8093c9853c7b04bf5aee0c377d4db304',
     openid:'', 
     userId:''
   }

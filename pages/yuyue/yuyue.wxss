@@ -17,11 +17,12 @@
   height: 150rpx;
   display: flex;
   flex-direction: column;
-  justify-content: space-around
+  justify-content: space-around;
+  margin-bottom: 30rpx
 }
 .input{
   width:700rpx;
-  height:66rpx;
+  height:80rpx;
   background:#f5f5f5;
   border-radius:20rpx;
   font-size: 26rpx

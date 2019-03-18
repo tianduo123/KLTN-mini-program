@@ -14,9 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */ 
   onLoad: function (options) {
+    console.log(options)
     //发请求获取用户积分记录
     wx.request({
-      url: api.getUserLog(app.globalData.userId),
+      url: api.getUserLog(options.userId),
       success:(res)=>{
         console.log(res)
         this.setData({
@@ -26,7 +27,7 @@ Page({
     })
     //获取用户积分
     wx.request({
-      url: api.getUserScore(app.globalData.userId),
+      url: api.getUserScore(options.userId),
       success:(res)=>{
         console.log(res)
         this.setData({

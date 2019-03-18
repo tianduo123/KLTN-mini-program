@@ -34,7 +34,7 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
     var p = transData.images[i];
     if (p.tag === "img") {
     if (p.attr.src.indexOf('https') === -1) {
-      p.attr.src = "http://192.168.8.101" + p.attr.src;
+      p.attr.src = "http://192.168.0.101" + p.attr.src;
     }
     }
     }
@@ -43,7 +43,7 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
 
           
     var obj = {};
-      transData.imageUrls[i] = "http://192.168.8.101" + transData.imageUrls[i];
+      transData.imageUrls[i] = "http://192.168.0.101" + transData.imageUrls[i];
     obj.src = transData.imageUrls[i];
     app.globalData.imageUrls.push(obj);
     // if(app.globalData.imageUrls.length==transData.imageUrls.length){

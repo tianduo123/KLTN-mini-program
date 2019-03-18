@@ -15,14 +15,17 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      userId:options.userid
+    })
     //获取全部排行榜
     wx.request({
       url: api.allRankList(),
       success:(res)=>{
         console.log(res)
         //通过userid,循环排行榜数组，拿到用户排名
-        console.log(app.globalData.userId)
-        var userId = app.globalData.userId;
+        console.log(this.data.userId)
+        var userId = this.data.userId;
         var idArr = res.data.map((item)=>{
           return item.id
         })
@@ -65,7 +68,7 @@ Page({
     })
     //获取用户积分
     wx.request({
-      url: api.getUserScore(app.globalData.userId),
+      url: api.getUserScore(this.data.userId),
       success:(res)=>{
         console.log(res)
         this.setData({

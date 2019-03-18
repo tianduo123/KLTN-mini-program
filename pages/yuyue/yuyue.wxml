@@ -16,7 +16,7 @@
   </view>
     <view class='item'>
     <view style='font-size:26rpx'>预约看园时间</view>
-    <picker mode='date' bindchange='binddatechange' name='time'>
+    <picker mode='date' start="2019-01-01" bindchange='binddatechange' name='time'>
       <input class='input' placeholder='请选择时间' placeholder-style='margin-left:40rpx;font-size:26rpx' disabled='disabled' value='{{val}}'>
       </input>
     </picker>

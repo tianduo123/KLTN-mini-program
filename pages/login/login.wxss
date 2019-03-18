@@ -5,9 +5,9 @@ page{
   background-repeat: no-repeat
 }
 .avatar{
-  width: 180rpx;
-  height: 180rpx;
-  margin: 120rpx auto 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 50rpx auto 20rpx;
   border-radius: 50%;
   overflow: hidden
 }
@@ -19,8 +19,19 @@ page{
 .btn{
   width: 80%;
   height: 100rpx;
-  margin: 40rpx auto 100rpx;
-  background: #ffa8be;
+  margin: 100rpx auto 100rpx;
+  background: #ffd3de;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  color: #ffffff
+}
+.btn2{
+  width: 80%;
+  height: 100rpx;
+  margin: 100rpx auto 100rpx;
+  background: #ff4171;
   line-height: 100rpx;
   text-align: center;
   border-radius: 50rpx;
@@ -30,7 +41,7 @@ page{
 .item{
   width: 80%;
   height: 90rpx;
-  margin: 30rpx auto;
+  margin: 60rpx auto;
   background: #f7f7f7;
   font-size: 28rpx;
   border-radius: 50rpx;

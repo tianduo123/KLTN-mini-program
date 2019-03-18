@@ -3,7 +3,7 @@
     <image src='{{imgurl+item.image}}' style='width:100%;height:100%'></image>
   </swiper-item>
 </swiper>
-<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>特色课程提前看</view>
+<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>每日既时看</view>
 <view class='tab'>
   <view class='tab-item' wx:for='{{tabList}}' wx:key='{{index}}' bindtap='toVideoDetail' data-id='{{item.id}}'>
     <image src='{{imgurl+item.image}}' style='width:100rpx;height:100rpx'></image>
@@ -13,7 +13,7 @@
 <view class='line'></view>
 <view class='near'>
     <view class='near_top'>
-      <view style='font-size:26rpx;font-weight:bold'>附近商家</view>
+      <view style='font-size:26rpx;font-weight:bold'>离您最近</view>
       <view style='font-size:24rpx;color:#999999;margin-right:20rpx' bindtap='tonear'>更多>></view>
     </view>
     <scroll-view scroll-x style='white-space:nowrap;height:250rpx;'>
@@ -24,7 +24,7 @@
     </scroll-view>
 </view>
 <view class='line'></view>
-<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>教育功能区</view>
+<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>身临其境看硬件</view>
 <view class='funwrap'>
   <view class='fun-item' wx:for='{{functionalList}}' wx:key='{{inedx}}' data-id='{{item.id}}' bindtap='toFuncdetail'>
     <image src='{{imgurl+item.image}}' style='width:212rpx;height:141rpx'></image>
@@ -43,9 +43,9 @@
 
 <view class='icon'>
   <view class='icon_img'>
-    <image src='../../icon/icon.jpg' style='width:100%;height:100%'></image>
+    <image src='../../icon/icon.png' style='width:100%;height:100%'></image>
   </view>
-  <view style='margin-top:15rpx'>快乐童年提供技术支持</view>
+  <view style='margin-top:15rpx'>—— 快乐童年提供技术支持 ——</view>
   <!-- <view></view> -->
 </view>
 

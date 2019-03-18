@@ -1,3 +1,5 @@
+
+
 // pages/yuyue/yuyue.js
 let api = require('../../request/api.js')
 Page({
@@ -57,7 +59,7 @@ Page({
     }else{
       //调取预约接口，成功后执行以下代码
       wx.request({
-        url: `http://192.168.8.101/children/index.php/Api/yu/yuyue?admin_id=5&order_name=${e.detail.value.name}&phone=${e.detail.value.phone}&yuyue_time=${e.detail.value.time}&tujian_name=${e.detail.value.tjr}`,
+        url: api.yuyue(e.detail.value.name,e.detail.value.phone,e.detail.value.time),
         success:(res)=>{
           console.log(res)
           wx.showToast({

@@ -13,8 +13,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.2",
-	"appid": "wx9e1b7369105e9c19",
-	"projectname": "%E5%BF%AB%E4%B9%90%E7%AB%A5%E5%B9%B4",
+	"appid": "wx66314928577b3667",
+	"projectname": "%E5%90%AF%E8%88%AA%E5%BF%AB%E4%B9%90%E7%AB%A5%E5%B9%B4",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -127,6 +127,13 @@
 					"name": "成长豆明细",
 					"pathName": "pages/scroe_detail/score_detail",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "333",
+					"pathName": "pages/video_detail/video_detail",
+					"query": "user_id=41",
 					"scene": null
 				}
 			]

@@ -8,7 +8,9 @@ Page({
    */
   data: {
     msg: '获取验证码',
-    timer_num: 60
+    timer_num: 60,
+    val:'',
+    val2:''
   },
 
   /**
@@ -36,11 +38,32 @@ Page({
     this.setData({
       phone: e.detail.value
     })
+    app.globalData.userPhone = e.detail.value
+  },
+  //获取用户输入验证码
+  userCode(e){
+    console.log(e.detail.value.length)
+    //输入手机号和验证码后高亮显示注册按钮
+    if(this.data.phone&&e.detail.value.length==4){
+      console.log('用户输入手机号&&验证码是4位数')
+      this.setData({
+        isLogin:true
+      })
+    }else{
+      this.setData({
+        isLogin:false
+      })
+    }
   },
   //获取验证码
   getcode() {
-    //判断当前的msg是否是'获取验证码'，如果是发短信，不是直接return
-    if (this.data.msg == '获取验证码') {
+    //判断用户手机号是否合法
+    if ((!(/^1[34578]\d{9}$/.test(this.data.phone)))){
+      wx.showToast({
+        title: '手机号输入有误',
+        icon: 'none'
+      })
+    } else if (this.data.msg == '获取验证码') {
       this.setData({
         msg: '已发送'
       })
@@ -83,19 +106,35 @@ Page({
     if(this.data.code == e.detail.value.usercode){
       //输入正确 --> 调注册接口
       wx.request({
-        url: api.login(app.globalData.openid, e.detail.value.phone, e.detail.value.name, e.detail.value.password, e.detail.value.tjr),
+        url: api.login(app.globalData.openid, e.detail.value.phone),
         success: (res) => {
           console.log(res)
-          if (res.data.status == 1) {
-            //注册成功,跳转登录页面
+          if(res.data.status == 1){
+            //注册成功，将userId存到缓存
+            wx.setStorage({
+              key: 'userId',
+              data: res.data.data,
+              success:()=>{
+                console.log('存储成功')
+              },
+              fail:()=>{
+                console.log('存储失败')
+              }
+            })
             wx.showToast({
-              title: '注册成功请登录',
-              success: () => {
-                setTimeout(() => {
-                  wx.reLaunch({
-                    url: '../register/register',
+              title: '注册成功',
+              success:()=>{
+                setTimeout(()=>{
+                  console.log('跳转到签到页面')
+                  wx.switchTab({
+                    url: `../qiandao/qiandao`,
                   })
-                }, 1500)
+                  this.setData({
+                    val: '',
+                    val2: ''
+                  })
+                },1500)
+                
               }
             })
           }

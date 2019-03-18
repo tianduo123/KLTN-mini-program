@@ -1,6 +1,8 @@
 /* pages/more_rank/more_rank.wxss */
 page{
-  background: #f5f5f5
+  background: #f5f5f5;
+  box-sizing: border-box;
+  padding-bottom: 40rpx
 }
 .top{
   width: 100%;
@@ -32,7 +34,7 @@ page{
 }
 .rankList{
   width: 90%;
-  height: 700rpx;
+  height: 900rpx;
   border-radius: 20rpx;
   background: #fff;
   margin: 0 auto;

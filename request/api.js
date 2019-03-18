@@ -1,10 +1,10 @@
 //本地服务器地址
-const API_BASE = 'http://192.168.0.101/syb/index.php/Api'
-const API_IMG = 'http://192.168.0.101/syb/'
+const API_BASE = 'http://192.168.0.100/syb/index.php/Api'
+const API_IMG = 'http://192.168.0.100/syb/'
 //服务器地址
-// const API_BASE = 'https://www.shimokeji.cn/syb/index.php/Api'
-// const API_IMG = 'https://www.shimokeji.cn/syb/'
-const BASE_ID = 5
+// const API_BASE = 'https://syb.shimokeji.cn/index.php/Api'
+// const API_IMG = 'https://syb.shimokeji.cn/'
+const BASE_ID = 15
 let app = getApp()
 //获取openid
 function getOpenid(a,b,c){
@@ -38,6 +38,10 @@ function getFunctional(){
 function getImg(){
   return API_BASE + `/Yu/image?admin_id=${BASE_ID}`
 }
+//预约接口
+function yuyue(a,b,c){
+  return API_BASE + `/Yu/yuyue?admin_id=${BASE_ID}&order_name=${a}&phone=${b}&yuyue_time=${c}`
+}
 //获取联系我们数据
 function getAddress(){
   return API_BASE + `/address/address?admin_id=${BASE_ID}`
@@ -55,8 +59,8 @@ function getcode(e){
   return API_BASE + `/user/smsSend2?phone=${e}`
 }
 //用户注册
-function login(a,b,c,d,g){
-  return API_BASE + `/user/register?admin_id=${BASE_ID}&openid=${a}&phone=${b}&name=${c}&password=${d}&tuijian=${g}`
+function login(a,b){
+  return API_BASE + `/user/register?admin_id=${BASE_ID}&openid=${a}&phone=${b}`
 }
 //判断用户是否注册
 function isLogin(a){
@@ -66,6 +70,7 @@ function isLogin(a){
 function saveUser(a,b,c){
   return API_BASE + `/user/saveUser?admin_id=${BASE_ID}&openid=${a}&nickname=${b}&headimgurl=${c}`
 }
+//
 //用户登录
 function register(a,b){
   return API_BASE + `/user/login?phone=${a}&password=${b}`
@@ -148,7 +153,23 @@ function isDone(a,b){
 }
 //领取任务积分
 function getScore(a,b,c,d){
-  return API_BASE + `/my/getScore?adimin_id=${BASE_ID}&openid=${a}&user_id=${b}&score_num=${c}&type=${d}`
+  return API_BASE + `/my/getScore?admin_id=${BASE_ID}&openid=${a}&user_id=${b}&score_num=${c}&type=${d}`
+}
+//判断分享和提建议今日是否领取
+function isGet(a,b){
+  return API_BASE + `/comment/is_ling?admin_id=${BASE_ID}&openid=${a}&user_id=${b}`
+}
+//填写推荐人
+function tuijian(a,b){
+  return API_BASE + `/user/registeScores?tuijian_phone=${a}&user_id=${b}`
+}
+//用户是否填写过推荐人
+function isMake(a){
+  return API_BASE + `/user/is_tuijian?user_id=${a}`
+}
+//取消兑换
+function cancel(a){
+  return API_BASE + `/my/del_exchangeAdd?admin_id=${BASE_ID}&id=${a}`
 }
 module.exports = {
   API_IMG,
@@ -163,6 +184,7 @@ module.exports = {
   like,
   getOpenid,
   getcode,
+  yuyue,
   login,
   isLogin,
   saveUser,
@@ -187,5 +209,9 @@ module.exports = {
   nearList,
   message,
   isDone,
-  getScore
+  getScore,
+  isGet,
+  tuijian,
+  isMake,
+  cancel
 }
