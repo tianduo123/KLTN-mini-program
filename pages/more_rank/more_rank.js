@@ -23,21 +23,36 @@ Page({
       url: api.allRankList(),
       success:(res)=>{
         console.log(res)
+        //过滤用户名为null的无效用户
+        console.log(res.data.filter((item)=>{
+          return item.nickname
+        }))
+        var filterArr = res.data.filter((item)=>{
+          return item.nickname
+        })
         //通过userid,循环排行榜数组，拿到用户排名
         console.log(this.data.userId)
         var userId = this.data.userId;
-        var idArr = res.data.map((item)=>{
+        // var idArr = res.data.map((item)=>{
+        //   return item.id
+        // })
+        var idArr = filterArr.map((item)=>{
           return item.id
         })
+
         console.log(idArr)
         console.log(idArr.indexOf(userId)+1)
         //截取数组4-最后一名
-        var newArr = res.data.slice(3)
+        // var newArr = res.data.slice(3)
+        var newArr = filterArr.slice(3)
         console.log(newArr)
         this.setData({
-          first:res.data[0],
-          second:res.data[1],
-          third:res.data[2],
+          // first:res.data[0],
+          // second:res.data[1],
+          // third:res.data[2],
+          first:filterArr[0],
+          second:filterArr[1],
+          third:filterArr[2],
           newArr,
           userRank: idArr.indexOf(userId) + 1
         })
