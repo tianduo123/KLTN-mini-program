@@ -109,6 +109,16 @@ Page({
         url: api.login(app.globalData.openid, e.detail.value.phone),
         success: (res) => {
           console.log(res)
+          //判断是否是新用户
+          if(res.data.first==0){
+            //新用户
+            console.log('新用户，赠送积分')
+            app.globalData.newP = true,
+            app.globalData.score = res.data.num
+          }else{
+            //老用户
+            console.log('老用户，不赠送积分')
+          }
           if(res.data.status == 1){
             //注册成功，将userId存到缓存
             wx.setStorage({

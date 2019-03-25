@@ -10,13 +10,17 @@ Page({
     isShow:false,
     isqiandao:false, 
     show:'none',
-    show2:''
+    show2:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    this.setData({
+      Height:app.globalData.Height
+    })
     console.log(options)
     //获取精选留言板
     wx.request({
@@ -81,11 +85,6 @@ Page({
         }
       })
     }else{
-      //未绑定手机号，提示用户去绑定
-      // wx.showToast({
-      //   title: '请绑定手机号后再进行该操作',
-      //   icon: 'none'
-      // })
       wx.showModal({
         title: '需注册手机号才能进行该操作',
         content: '是否现在注册',
@@ -424,6 +423,37 @@ Page({
 
 
   },
+  //领取新人积分
+  getNewScore(){
+    console.log('新人积分')
+    wx.request({
+      url: api.getNscore(this.data.userId,app.globalData.score),
+      success:(res)=>{
+        console.log(res)
+        if(res.data.status == 1){
+          wx.showToast({
+            title: '领取成功',
+            success:()=>{
+              //更新用户积分
+              wx.request({
+                url: api.getUserScore(this.data.userId),
+                success: (res) => {
+                  console.log(res)
+                  this.setData({
+                    score: res.data.data.score
+                  })
+                }
+              })
+            }
+          })
+        }
+      }
+    })
+    app.globalData.newP = false
+    this.setData({
+      isNew:false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -443,8 +473,6 @@ Page({
           userId:res.data,
           // show:false
         })
-
-
         //每次进入判断用户是否签到!!
         wx.request({
           url: api.isQiandao(app.globalData.openid, this.data.userId),
@@ -459,9 +487,9 @@ Page({
             else {
               console.log('今日已签到')
               this.setData({
-                isqiandao: true
+                isqiandao: true,
+                days:res.data.day
               })
-
             }
           }
         })
@@ -497,8 +525,7 @@ Page({
               this.setData({
                 get3:true
               })
-            }
-            
+            }           
             if(res.data.share == 1){
                 console.log('今日已完成分享任务')
                 this.setData({
@@ -532,32 +559,40 @@ Page({
       },
     })
     //从缓存中拿签到状态!!
-    wx.getStorage({
-      key: 'isqiandao',
-      success:(res)=>{
-        console.log(res)
-        if(res.data==0||1){
-          this.setData({
-            isqiandao:true
-          })
-        }
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    // wx.getStorage({
+    //   key: 'isqiandao',
+    //   success:(res)=>{
+    //     console.log(res)
+    //     if(res.data==0||1){
+    //       this.setData({
+    //         isqiandao:true
+    //       })
+    //     }
+    //   },
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
     //从缓存中拿连续签到天数!!
-    wx.getStorage({
-      key: 'days',
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          days:res.data
-        })
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-  
+    // wx.getStorage({
+    //   key: 'days',
+    //   success:(res)=>{
+    //     console.log(res)
+    //     this.setData({
+    //       days:res.data
+    //     })
+    //   },
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
+    //判断是否是新用户
+    console.log(app.globalData.newP)
+    if(app.globalData.newP){
+      this.setData({
+        isNew:true
+      })
+    }  
+    //判断用户是否签到及签到天数
+
   },
 
   /**
@@ -573,34 +608,6 @@ Page({
         console.log(res)
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
   },
 
 })

@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -134,6 +134,12 @@
 					"name": "333",
 					"pathName": "pages/video_detail/video_detail",
 					"query": "user_id=41",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "视频列表",
+					"pathName": "pages/everyday/everyday",
 					"scene": null
 				}
 			]

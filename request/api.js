@@ -22,9 +22,21 @@ function getBannerDetail(e){
 function getTab(){ 
   return API_BASE + `/index/courseCategory?admin_id=${BASE_ID}`
 }
+//课程列表
+function getVideoList(a){
+  return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}`
+}
 //获取视频详情
 function getVideiDetail(e,f){
-  return API_BASE + `/index/course?admin_id=${BASE_ID}&cid=${e}&openid=${f}`
+  return API_BASE + `/index/course?admin_id=${BASE_ID}&id=${e}&openid=${f}`
+}
+//视频浏览量
+function addBrowser(a){
+  return API_BASE + `/index/courseBro?id=${a}`
+}
+//身临其境浏览量
+function addBrowser2(a) {
+  return API_BASE + `/index/eduBrowser?id=${a}`
 }
 //视频点赞
 function video_zan(a,b){
@@ -32,7 +44,7 @@ function video_zan(a,b){
 }
 //获取功能区列表
 function getFunctional(){
-  return API_BASE + `/index/eduCategory?admin_id=${BASE_ID}`
+  return API_BASE + `/index/edu?admin_id=${BASE_ID}`
 }
 //获取预约顶部图片 
 function getImg(){
@@ -53,6 +65,10 @@ function getFuncdetail(e,f){
 //点赞接口
 function like(e,f){
   return API_BASE + `/index/eduCategoryZan?admin_id=${BASE_ID}&openid=${f}&category_id=${e}`
+}
+//身临其境视频点赞
+function like2(a,b){
+  return API_BASE + `/index/eduCategoryZan?admin_id=${BASE_ID}&openid=${a}&edu_id=${b}`
 }
 //短信接口
 function getcode(e){
@@ -79,9 +95,17 @@ function register(a,b){
 function comment(a,b,c){
   return API_BASE + `/course/comment?admin_id=${BASE_ID}&openid=${a}&content=${b}&course_id=${c}`
 }
+//身临其境评论
+function comment2(a, b, c) {
+  return API_BASE + `/edu/comment?admin_id=${BASE_ID}&openid=${a}&content=${b}&edu_id=${c}`
+}
 //评论列表
 function commentList(a){
   return API_BASE + `/course/commentList?admin_id=${BASE_ID}&course_id=${a}`
+}
+//身临其境评论列表
+function commentList2(a){
+  return API_BASE + `/edu/commentList?admin_id=${BASE_ID}&edu_id=${a}`
 }
 //评论点赞
 function commentZan(a,b){
@@ -171,47 +195,23 @@ function isMake(a){
 function cancel(a){
   return API_BASE + `/my/del_exchangeAdd?admin_id=${BASE_ID}&id=${a}`
 }
+//身临其境更新点赞数量
+function getZan(a){
+  return API_BASE + `/index/update_zan?id=${a}`
+}
+//新注册用户领积分
+function getNscore(a,b){
+  return API_BASE + `/user/newUserScore?user_id=${a}&num=${b}`
+}
+//获取喵喵老师二维码
+function getShare(){
+  return API_BASE + `/address/appMa`
+}
 module.exports = {
   API_IMG,
-  getBanner,
-  getTab,
-  getFunctional,
-  getImg,
-  getBannerDetail,
-  getAddress,
-  getFuncdetail,
-  getVideiDetail,
-  like,
-  getOpenid,
-  getcode,
-  yuyue,
-  login,
-  isLogin,
-  saveUser,
-  register,
-  video_zan,
-  comment,
-  commentList,
-  commentZan,
-  rankList,
-  allRankList,
-  resetPsd,
-  getRule,
-  goodsList,
-  getGoods,
-  getUserScore,
-  getLog,
-  getUserLog,
-  qiandao,
-  isQiandao,
-  submit,
-  share,
-  nearList,
-  message,
-  isDone,
-  getScore,
-  isGet,
-  tuijian,
-  isMake,
-  cancel
+  getBanner,getTab,getFunctional,getImg,getBannerDetail,getAddress,getVideoList,getFuncdetail,getVideiDetail,like,
+  getOpenid,getcode,yuyue,login,isLogin,saveUser,register,video_zan,comment,commentList,commentZan,rankList,allRankList,
+  resetPsd,getRule,goodsList,getGoods,getUserScore,getLog,getUserLog,qiandao,isQiandao,submit,share,nearList,message,
+  isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2,comment2, commentList2, like2, getZan,getNscore,
+  getShare
 }

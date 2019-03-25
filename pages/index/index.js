@@ -7,14 +7,32 @@ Page({
    */
   data: {
      imgurl:api.API_IMG,
-     isShow:false
+    //  isShow:true,
+     val:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('jahsjakh')
+    //从缓存中拿用户userInfo数据
+    wx.getStorage({
+      key: 'userInfo',
+      success:(res)=>{
+        console.log('拿到授权信息')
+        //拿到用户微信信息 --> 不显示授权蒙层
+        this.setData({
+          isShow:false
+        })
+      },
+      fail:(res)=>{
+        console.log('没拿到授权信息')
+        //没拿到用户微信信息 --> 显示授权蒙层
+        this.setData({
+          isShow:true
+        })
+      }
+    })
     //获取用户经纬度（显示附近商家需要）
     wx.getLocation({
       success:(res)=>{
@@ -45,7 +63,6 @@ Page({
         app.globalData.Height = res.screenHeight
       },
     })
-
     //获取首页轮播
     wx.request({
       url: api.getBanner(),
@@ -56,7 +73,7 @@ Page({
         })
       }
     })
-    //获取首页8个视频导航
+    //获取每日即时看8个导航按钮
     wx.request({
       url: api.getTab(),
       success:(res)=>{
@@ -66,7 +83,7 @@ Page({
         })
       }
     })
-    //获取首页功能区分类
+    //获取身临其境视频列表
     wx.request({
       url: api.getFunctional(),
       success:(res)=>{
@@ -135,7 +152,7 @@ Page({
         data: res.detail.userInfo,
       })
       this.setData({
-        isShow:true
+        isShow:false
       })
       //调用接口保存用户授权信息
       wx.request({
@@ -146,11 +163,12 @@ Page({
       })
     }
   },
-  //视频详情
+
+  //每日即时看
   toVideoDetail(e){
-    console.log('点击了视频',e)
+    console.log('点击了每日即时看',e)
     wx.navigateTo({
-      url: `/pages/video_detail/video_detail?id=${e.currentTarget.dataset.id}`,
+      url: `/pages/everyday/everyday?id=${e.currentTarget.dataset.id}`,
     })
   },
   //商品详情
@@ -160,15 +178,148 @@ Page({
       url: `/pages/goods_detail/goods_detail?id=${e.currentTarget.dataset.id}`,
     })
   },
-  //功能区详情
+  //点击身临其境
   toFuncdetail(e){
-    console.log(e)
-    wx.navigateTo({
-      url: `/pages/func_detail/func_detail?id=${e.currentTarget.dataset.id}`,
+    console.log('身临其境',e)
+    //对应的评论列表
+    wx.request({
+      url: api.commentList2(e.currentTarget.dataset.id),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          list:res.data.re
+        })
+      }
+    })
+    //对应的浏览、点赞数量
+    wx.request({
+      url: api.getZan(e.currentTarget.dataset.id),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+        browser: res.data.re.browser,
+        zan: res.data.re.zan
+        })
+      }
+    })
+    this.setData({
+      Vshow:true,
+      src:e.currentTarget.dataset.src,
+      id:e.currentTarget.dataset.id
     })
   },
-
-  /**
+  //身临其境点赞
+  video_zan(e){
+    console.log('点赞',this.data.id)
+    wx.request({
+      url: api.like2(app.globalData.openid,this.data.id),
+      success:(res)=>{
+        console.log(res)
+        wx.showToast({
+          title: res.data.msg,
+          //点赞/取消点赞后更新点赞数量
+          success:()=>{
+            wx.request({
+              url: api.getZan(this.data.id),
+              success:(res)=>{
+                console.log(res)
+                this.setData({
+                  zan:res.data.re.zan
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  },
+  //关闭
+  close(){
+    this.setData({
+      Vshow:false
+    })
+    //获取身临其境视频列表
+    wx.request({
+      url: api.getFunctional(),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          functionalList: res.data.re
+        })
+      }
+    })
+  },
+  //评论
+  comment(){
+    console.log('评论',this.data.val)
+    //判断评论内容是否合法
+    if(this.data.val){
+      wx.request({
+        url: api.comment2(app.globalData.openid, this.data.val, this.data.id),
+        success: (res) => {
+          console.log(res)
+          if (res.data.status == 1) {
+            //评论成功
+            wx.showToast({
+              title: '评论成功',
+              success: () => {
+                //清空输入
+                this.setData({
+                  val: ''
+                })
+                //刷新评论列表
+                wx.request({
+                  url: api.commentList2(this.data.id),
+                  success: (res) => {
+                    console.log(res)
+                    this.setData({
+                      list: res.data.re
+                    })
+                  }
+                })
+              }
+            })
+          }
+        }
+      })    
+    } else {
+      wx.showToast({
+        title: '您还没有输入内容哦',
+        icon: 'none'
+      })
+    }
+  
+  },
+  //获取用户评论内容
+  getVal(e){
+    console.log(e)
+    this.setData({
+      val:e.detail.value
+    })
+  },
+  //播放/继续播放，增加浏览量
+  play(){
+    console.log('播放')
+    //调用增加浏览量数量接口
+    wx.request({
+      url: api.addBrowser2(this.data.id),
+      success:(res)=>{
+        console.log(res)
+        //更新浏览数量
+        wx.request({
+          url: api.getZan(this.data.id),
+          success: (res) => {
+            console.log(res)
+            this.setData({
+              browser: res.data.re.browser,
+            })
+          }
+        })
+      }
+    })
+  },
+  //
+    /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -179,46 +330,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow')
-    //获取首页功能区分类
-    wx.request({
-      url: api.getFunctional(),
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          functionalList: res.data.re
-        })
-      }
-    })
  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
   },
 
   /**

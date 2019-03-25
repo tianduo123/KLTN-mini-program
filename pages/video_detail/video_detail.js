@@ -28,7 +28,7 @@ Page({
       url: api.getVideiDetail(options.id, app.globalData.openid),
       success:(res)=>{
         console.log(res)
-        if(res.data.is_zan.is_zan == 0){
+        if(res.data.data.is_zan.is_zan == 0){
           this.setData({
             isZan:false
           })
@@ -38,32 +38,21 @@ Page({
           })
         }
         this.setData({
-          detail: res.data.data,
-          videoUrl:res.data.data.video,
-          borwser:res.data.data.browser,
-          zan:res.data.data.zan,
-          comment:res.data.data.comment
+          detail: res.data.data.re,
         })
         var article = this.data.detail.content;
         WxParse.wxParse('article', 'html', article, this, 5);
       }
     })
-    //获取手机系统，用于显示评论内容是否居中
-    wx.getSystemInfo({
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          system:res.platform
-        })
-      },
-    })
+ 
     //获取评论列表
     wx.request({
       url: api.commentList(this.data.courseid),
       success:(res)=>{
         console.log(res)
         this.setData({
-          commentList:res.data.re
+          commentList:res.data.re,
+          comment:res.data.re.length
         })
       }
     })
@@ -71,10 +60,10 @@ Page({
   },
 
   //视频点赞
-  video_zan(){
+  video_zan(e){
     console.log("视频点赞")
     wx.request({
-      url: api.video_zan(app.globalData.openid, this.data.courseid),
+      url: api.video_zan(app.globalData.openid, e.currentTarget.dataset.id),
       success:(res)=>{
         console.log(res)
         wx.showToast({
@@ -86,7 +75,7 @@ Page({
           success: (res) => {
             console.log(res)
             this.setData({
-              zan: res.data.data.zan
+              detail: res.data.data.re
             })
           }
         })

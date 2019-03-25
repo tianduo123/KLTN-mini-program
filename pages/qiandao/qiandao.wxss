@@ -1,12 +1,11 @@
 /* pages/qiandao/qiandao.wxss */
+
 page{
   background: #fd384e;
   box-sizing: border-box;
   padding: 1rpx
 }
 .bindPhone{
-  /* border: 1px solid #FFFF00; */
-  /* border-radius: 20rpx; */
   font-size: 28rpx;
   color: #FFFF00;
   text-align: right;
@@ -23,7 +22,6 @@ page{
 }
 .bottom{
   width: 700rpx;
-  /* height: 700rpx; */
   background: #ffffff;
   margin: 20rpx auto;
   border-radius: 20rpx;
@@ -130,7 +128,6 @@ page{
   background: #fd384e;
   color: #ffffff;
   font-size: 26rpx;
-  /* 去除button默认样式 */
   padding: 0
 }
 .rule{
@@ -140,13 +137,7 @@ page{
   width: 160rpx;
   height: 50rpx
 }
-/* .rule2{
-  position: absolute;
-  top: 100rpx;
-  right: 0;
-  width: 160rpx;
-  height: 50rpx
-} */
+
 .qiandao{
   width: 400rpx;
   height: 74rpx;
@@ -280,4 +271,28 @@ page{
 .msg_icon{
   width: 60rpx;
   height: 60rpx;
+}
+.newP{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.7)
+}
+.newP_wrap{
+  margin-top: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.newP_btn{
+  width: 280rpx;
+  height: 70rpx;
+  background: #ffcc66;
+  margin-top: 40rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  border-radius: 10rpx;
+  color: #ffffff
 }

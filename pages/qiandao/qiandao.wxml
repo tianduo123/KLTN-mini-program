@@ -1,8 +1,4 @@
-<!--pages/qiandao/qiandao.wxml-->
-<!-- <view> -->
-
 <image src='../../icon/rule.png' class='rule' bindtap='rule'></image>
-<!-- <image src='../../icon/detail.png' class='rule2' ></image> -->
 <view class='userInfo'>
   <image src='{{userInfo.avatarUrl}}' class='avatar'>
   </image>
@@ -95,12 +91,6 @@
         <view style='color:#999999'>填写推荐人手机号：500成长豆</view>
       </view>
       <view class='right'>
-        <!-- <view class='btn' wx:if='{{tuijian.score}}' bindtap='getScore2'>
-          <view style='display:flex;align-items:center;'>
-            <image src='../../icon/score.png' style='width:30rpx;height:30rpx;margin-right:10rpx'></image>
-            <view>领取</view>
-          </view>
-        </view> -->
         <view class='btn' bindtap='complete2'>去完成</view>
       </view>
     </view>
@@ -117,7 +107,6 @@
       <view style='color:#999999'>建议需20字以上，一经采纳获赠200成长豆</view>
     </view>
     <view class='right'>
-      <!-- <view class='{{isGet3?"btn2":"btn"}}' bindtap='{{isGet3?"":"getScore3"}}' wx:if='{{comment.score}}'>{{isGet3?"已完成":"去领取"}}</view> -->
       <view class='btn' bindtap='getScore3' wx:if='{{comment.score}}'>
         <view style='display:flex;align-items:center;'>
           <image src='../../icon/score.png' style='width:30rpx;height:30rpx;margin-right:10rpx'></image>
@@ -161,4 +150,14 @@
       <view wx:for='{{ruleList}}' wx:key>{{item}}</view>
     </view>
   </view>
+</view>
+
+<!-- 新用户送积分弹窗 -->
+<view class='newP' style='height:{{Height*2}}rpx' wx:if='{{isNew}}'>
+
+  <view class='newP_wrap'>
+    <image src='../../icon/new.png' style='width:350rpx;height:350rpx'></image>
+    <view class='newP_btn' bindtap='getNewScore'>立即领取</view>
+  </view>
+
 </view>

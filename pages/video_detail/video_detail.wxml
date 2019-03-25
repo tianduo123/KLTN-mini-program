@@ -1,7 +1,7 @@
 <!--pages/video_detail/video_detail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 
-<video controls class='video' src='{{videoUrl}}'></video>
+<video controls class='video' src='{{detail.video}}'></video>
 <!-- <view class='title'>{{detail.}}</view> -->
 <view class='title2'>上传时间：{{detail.update_time}}</view>
 <view class='line'></view>
@@ -13,13 +13,13 @@
   <view class='btn_item'>
     <view class='z'>
       <image src='../../icon/zuji.png' style='width:50rpx;height:50rpx'></image>
-      {{borwser}}人浏览
+      {{detail.browser}}人浏览
     </view>
   </view>
   <view class='btn_item' style='border-right:1px solid #eeeeee;border-left:1px solid #eeeeee'>
-    <view class='z' bindtap='video_zan'>
+    <view class='z' bindtap='video_zan' data-id='{{detail.id}}'>
       <image src='../../icon/zan.png' style='width:50rpx;height:50rpx'></image>
-      <view>{{zan}}人点赞</view>
+      <view>{{detail.zan}}人点赞</view>
     </view>
   </view>
   <view class='btn_item'>
@@ -33,7 +33,7 @@
 </view>
 <view class='line'></view>
 <!-- 评论区 -->
-<view class='comment_title'>评论（{{comment}}）</view>
+<view class='comment_title'>评论（{{commentList?comment:0}}）</view>
 <view class='comment_wrap'>
   <view class='comment_wrap_item' wx:for='{{commentList}}' wx:key='{{index}}'>
     <view class='top'>
@@ -54,12 +54,6 @@
     <view class='bottom'>{{item.content}}</view>
   </view>
 </view>
-<!-- <view class='comment'>
-  <view class='inp'>
-  <textarea class='{{system=="ios"?"inp2":"inp3"}}' placeholder='我要评论' bindinput='getVal' value='{{val}}'></textarea>
-  </view>
-  <view class='button' bindtap='comment'>评论</view>                    
-</view> -->
 <view class='comment'>
   <input placeholder='我要评论' bindinput='getVal' value='{{val}}' style='font-size:28rpx'></input>
   <view class='button' bindtap='comment'>评论</view>
