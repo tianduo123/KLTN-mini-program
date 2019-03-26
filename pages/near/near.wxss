@@ -15,9 +15,13 @@
   width: 200rpx;
   height: 140rpx;
 }
+.right_wrap{
+  display: flex;
+  align-items: center
+}
 .right{
   width: 450rpx;
-  height: 140rpx;
+  /* height: 140rpx; */
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;

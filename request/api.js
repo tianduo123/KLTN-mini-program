@@ -1,9 +1,9 @@
 //本地服务器地址
-const API_BASE = 'http://192.168.0.100/syb/index.php/Api'
-const API_IMG = 'http://192.168.0.100/syb/'
+// const API_BASE = 'http://192.168.0.100/syb/index.php/Api'
+// const API_IMG = 'http://192.168.0.100/syb/'
 //服务器地址
-// const API_BASE = 'https://syb.shimokeji.cn/index.php/Api'
-// const API_IMG = 'https://syb.shimokeji.cn/'
+const API_BASE = 'https://syb.qhkltn.com/index.php/Api'
+const API_IMG = 'https://syb.qhkltn.com/'
 const BASE_ID = 15
 let app = getApp()
 //获取openid
@@ -25,6 +25,10 @@ function getTab(){
 //课程列表
 function getVideoList(a){
   return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}`
+}
+//课程裂变分页
+function getNextPage(a,b){
+  return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}&page=${b}`
 }
 //获取视频详情
 function getVideiDetail(e,f){
@@ -207,11 +211,12 @@ function getNscore(a,b){
 function getShare(){
   return API_BASE + `/address/appMa`
 }
+
 module.exports = {
   API_IMG,
   getBanner,getTab,getFunctional,getImg,getBannerDetail,getAddress,getVideoList,getFuncdetail,getVideiDetail,like,
   getOpenid,getcode,yuyue,login,isLogin,saveUser,register,video_zan,comment,commentList,commentZan,rankList,allRankList,
   resetPsd,getRule,goodsList,getGoods,getUserScore,getLog,getUserLog,qiandao,isQiandao,submit,share,nearList,message,
   isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2,comment2, commentList2, like2, getZan,getNscore,
-  getShare
+  getShare, getNextPage
 }

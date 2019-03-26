@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+   Vlist:[],//视频列表
+   page:0,//页码
+   hasMore:true,//true为有更多数据,false为数据加载完毕
+   imgUrl:api.API_IMG
   },
 
   /**
@@ -19,18 +22,66 @@ Page({
       id:options.id
     })
     //获取视频列表
+    // wx.request({
+    //   url: api.getVideoList(options.id),
+    //   success:(res)=>{
+    //     console.log(res)
+    //     this.setData({
+    //       Vlist:res.data.re
+    //     })
+    //   }
+    // }) 
+    this.getVlist()
+  },
+  //获取视频列表函数
+  getVlist(){
+    var page = this.data.page //获取页码
+    //发请求获取列表
     wx.request({
-      url: api.getVideoList(options.id),
+      url: api.getNextPage(this.data.id,this.data.page),
       success:(res)=>{
         console.log(res)
-        this.setData({
-          Vlist:res.data.re
-        })
+        if(res.data.status == 1){
+          console.log('获取成功')
+          var allArr = []
+          var initArr = this.data.Vlist ? this.data.Vlist : [] //获取已经加载的视频
+          var newArr = res.data.re //获取新加载的视频
+          var lastPageLength = newArr.length //获取新加载的视频数量
+          if (this.data.page == 0) {
+            //如果是第一页
+            allArr = res.data.re
+          } else {
+            //如果不是第一页，将已加载与新加载的数组合并
+            allArr = initArr.concat(newArr)
+          }
+          if (lastPageLength < 4) {
+            //如果新加载的视频数量<4，说明没有下一页了
+            this.setData({
+              hasMore: false
+            })
+          }
+          this.setData({
+            Vlist: allArr
+          })
+        }else{
+          wx.showToast({
+            title: '视频已加载完毕',
+            icon:'none'
+          })
+        }
+     
+      },
+      fail:()=>{
+        console.log('数据请求失败')
+      },
+      complete:()=>{
+        // wx.hideLoading()
       }
     })
-
-    
   },
+
+
+
   //去视频详情
   toDetail(e){
     console.log(e)
@@ -85,15 +136,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.request({
-      url: api.getVideoList(this.data.id),
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          Vlist: res.data.re
-        })
-      }
-    })
+    // wx.request({
+    //   url: api.getVideoList(this.data.id),
+    //   success: (res) => {
+    //     console.log(res)
+    //     this.setData({
+    //       Vlist: res.data.re
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -121,7 +172,16 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('到底啦，别啦啦')
+    var page = this.data.page //获取当前页码
+    if(this.data.hasMore){
+      //页码+1，调用函数获取下一页内容
+      page++
+      this.setData({
+        page
+      })
+      this.getVlist()
+    }
   },
 
   /**
