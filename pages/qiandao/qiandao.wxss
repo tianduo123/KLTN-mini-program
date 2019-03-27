@@ -186,6 +186,13 @@ page{
   flex-direction: column;
   align-items: center;
 }
+.rule_img{
+  width: 80%;
+  height: 900rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  overflow: hidden
+}
 .content_wrap{
   width: 90%;
   height: 800rpx;

@@ -6,7 +6,6 @@
     "pages/yuyue/yuyue",
     "pages/goods_detail/goods_detail",
     "pages/video_detail/video_detail",
-    "pages/func_detail/func_detail",
     "pages/login/login",
     "pages/near/near",
     "pages/qiandao/qiandao",
@@ -15,7 +14,8 @@
     "pages/record/record",
     "pages/more_rank/more_rank",
     "pages/scroe_detail/score_detail",
-    "pages/everyday/everyday"
+    "pages/everyday/everyday",
+    "pages/slqj_detail/slqj_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

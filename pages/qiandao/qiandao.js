@@ -163,18 +163,6 @@ Page({
   },
   //成长豆规则
   rule(){
-    //获取成长豆规则
-    wx.request({
-      url: api.getRule(),
-      success:(res)=>{
-        console.log(res)
-        var ruleList = res.data.re.content.split(';')
-        console.log(ruleList)
-        this.setData({
-          ruleList
-        })
-      }
-    })
     this.setData({
       isShow:true
     })
@@ -558,32 +546,6 @@ Page({
         })
       },
     })
-    //从缓存中拿签到状态!!
-    // wx.getStorage({
-    //   key: 'isqiandao',
-    //   success:(res)=>{
-    //     console.log(res)
-    //     if(res.data==0||1){
-    //       this.setData({
-    //         isqiandao:true
-    //       })
-    //     }
-    //   },
-    //   fail: function(res) {},
-    //   complete: function(res) {},
-    // })
-    //从缓存中拿连续签到天数!!
-    // wx.getStorage({
-    //   key: 'days',
-    //   success:(res)=>{
-    //     console.log(res)
-    //     this.setData({
-    //       days:res.data
-    //     })
-    //   },
-    //   fail: function(res) {},
-    //   complete: function(res) {},
-    // })
     //判断是否是新用户
     console.log(app.globalData.newP)
     if(app.globalData.newP){
@@ -591,8 +553,16 @@ Page({
         isNew:true
       })
     }  
-    //判断用户是否签到及签到天数
-
+    //每次进来刷新留言板
+    wx.request({
+      url: api.message(),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          msgList: res.data.comment
+        })
+      }
+    })
   },
 
   /**

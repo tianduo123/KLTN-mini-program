@@ -139,16 +139,11 @@
 
 <!-- 积分规则 -->
 <view class='rule_wrap' style='width:100%;height:100%;' wx:if='{{isShow}}'>
-  <view style='width:100%;text-align:right;margin-top:150rpx;margin-bottom:30rpx;'>
+  <view style='width:100%;text-align:right;margin-top:50rpx;margin-bottom:10rpx;'>
     <image src='../../icon/close.svg' style='margin-right:50rpx;width:60rpx;height:60rpx' bindtap='close'></image>
   </view>
-  <view class='content_wrap'>
-    <view class='content_wrap_top'>
-      <image src='../../icon/rule2.png'></image>
-    </view>
-    <view class='content_wrap_bottom'>
-      <view wx:for='{{ruleList}}' wx:key>{{item}}</view>
-    </view>
+  <view class='rule_img'>
+    <image src='https://syb.qhkltn.com/Uploads/2019-03/1553674045-5c9b2f3d2260f.png' style='width:100%;height:100%'></image>
   </view>
 </view>
 

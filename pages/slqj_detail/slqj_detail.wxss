@@ -1,0 +1,92 @@
+/* pages/slqj_detail/slqj_detail.wxss */
+page{
+  box-sizing: border-box;
+  padding-bottom: 120rpx
+}
+.menu{
+  width: 100%;
+  height: 75rpx;
+  display: flex;
+  /* border-bottom: 1px solid #eee */
+}
+.browser,.like,.share{
+  width: 33.33%;
+  font-size: 26rpx;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}
+/* 去除button默认样式 */
+button::after{
+  border: none
+}
+button{
+  background: transparent;
+  border-radius: 0;
+  outline: none;
+}
+.hover{
+  background: #fff
+}
+/* ******   这是一条分割线   ******* */
+.line{
+  width: 100%;
+  height: 12rpx;
+  background: #eee
+}
+
+.comment_wrap{
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  width: 100% 
+}
+.title{
+  font-size: 30rpx;
+  font-weight: bold
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #eee;
+  margin-top: 20rpx
+}
+.userInfo{
+  font-size: 28rpx;
+  color: #eee;
+  display: flex;
+  align-items: center
+}
+.content{
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx
+}
+
+.bottom{
+  width: 100%;
+  height: 80rpx;
+  border-top: 1px solid #eeeeee;
+  position: fixed;
+  bottom: 0 ;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  background: #fff
+}
+.inp{
+  margin-left: 30rpx;
+  width: 60%;
+}
+.comment{
+  width: 18%;
+  height: 60rpx;
+  border: 1px solid #FFCC00;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  color: #FFCC00
+}

@@ -38,6 +38,10 @@ function getVideiDetail(e,f){
 function addBrowser(a){
   return API_BASE + `/index/courseBro?id=${a}`
 }
+//身临其境详情
+function getSlqj(a,b){
+  return API_BASE + `/index/eduDetail?id=${a}&admin_id=${BASE_ID}&openid=${b}`
+}
 //身临其境浏览量
 function addBrowser2(a) {
   return API_BASE + `/index/eduBrowser?id=${a}`
@@ -218,5 +222,5 @@ module.exports = {
   getOpenid,getcode,yuyue,login,isLogin,saveUser,register,video_zan,comment,commentList,commentZan,rankList,allRankList,
   resetPsd,getRule,goodsList,getGoods,getUserScore,getLog,getUserLog,qiandao,isQiandao,submit,share,nearList,message,
   isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2,comment2, commentList2, like2, getZan,getNscore,
-  getShare, getNextPage
+  getShare, getNextPage, getSlqj
 }

@@ -10,13 +10,21 @@ Page({
     name1:'',
     tel:'',
     name2:'',
-    imgurl:api.API_IMG
+    imgurl:api.API_IMG,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取当前时间
+    var myDate = new Date()
+    var y = 1900 + myDate.getYear()
+    var m = '0' + (myDate.getMonth() + 1)
+    var d = '0' + myDate.getDate()
+    this.setData({
+      date: y + '-' + m.substring(m.length - 2, m.length) + '-' + d.substring(d.length - 2, d.length)
+    })
     //获取预约页面顶部图片
     wx.request({
       url: api.getImg(),

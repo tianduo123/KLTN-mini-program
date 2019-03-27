@@ -178,146 +178,16 @@ Page({
       url: `/pages/goods_detail/goods_detail?id=${e.currentTarget.dataset.id}`,
     })
   },
+
+
   //点击身临其境
   toFuncdetail(e){
-    console.log('身临其境',e)
-    //对应的评论列表
-    wx.request({
-      url: api.commentList2(e.currentTarget.dataset.id),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          list:res.data.re
-        })
-      }
-    })
-    //对应的浏览、点赞数量
-    wx.request({
-      url: api.getZan(e.currentTarget.dataset.id),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-        browser: res.data.re.browser,
-        zan: res.data.re.zan
-        })
-      }
-    })
-    this.setData({
-      Vshow:true,
-      src:e.currentTarget.dataset.src,
-      id:e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../slqj_detail/slqj_detail?id=${e.currentTarget.dataset.id}`,
     })
   },
-  //身临其境点赞
-  video_zan(e){
-    console.log('点赞',this.data.id)
-    wx.request({
-      url: api.like2(app.globalData.openid,this.data.id),
-      success:(res)=>{
-        console.log(res)
-        wx.showToast({
-          title: res.data.msg,
-          //点赞/取消点赞后更新点赞数量
-          success:()=>{
-            wx.request({
-              url: api.getZan(this.data.id),
-              success:(res)=>{
-                console.log(res)
-                this.setData({
-                  zan:res.data.re.zan
-                })
-              }
-            })
-          }
-        })
-      }
-    })
-  },
-  //关闭
-  close(){
-    this.setData({
-      Vshow:false
-    })
-    //获取身临其境视频列表
-    wx.request({
-      url: api.getFunctional(),
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          functionalList: res.data.re
-        })
-      }
-    })
-  },
-  //评论
-  comment(){
-    console.log('评论',this.data.val)
-    //判断评论内容是否合法
-    if(this.data.val){
-      wx.request({
-        url: api.comment2(app.globalData.openid, this.data.val, this.data.id),
-        success: (res) => {
-          console.log(res)
-          if (res.data.status == 1) {
-            //评论成功
-            wx.showToast({
-              title: '评论成功',
-              success: () => {
-                //清空输入
-                this.setData({
-                  val: ''
-                })
-                //刷新评论列表
-                wx.request({
-                  url: api.commentList2(this.data.id),
-                  success: (res) => {
-                    console.log(res)
-                    this.setData({
-                      list: res.data.re
-                    })
-                  }
-                })
-              }
-            })
-          }
-        }
-      })    
-    } else {
-      wx.showToast({
-        title: '您还没有输入内容哦',
-        icon: 'none'
-      })
-    }
-  
-  },
-  //获取用户评论内容
-  getVal(e){
-    console.log(e)
-    this.setData({
-      val:e.detail.value
-    })
-  },
-  //播放/继续播放，增加浏览量
-  play(){
-    console.log('播放')
-    //调用增加浏览量数量接口
-    wx.request({
-      url: api.addBrowser2(this.data.id),
-      success:(res)=>{
-        console.log(res)
-        //更新浏览数量
-        wx.request({
-          url: api.getZan(this.data.id),
-          success: (res) => {
-            console.log(res)
-            this.setData({
-              browser: res.data.re.browser,
-            })
-          }
-        })
-      }
-    })
-  },
+
+
   //
     /**
    * 生命周期函数--监听页面初次渲染完成
@@ -330,7 +200,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
- 
+    //获取身临其境视频列表
+    wx.request({
+      url: api.getFunctional(),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          functionalList: res.data.re
+        })
+      }
+    })
   },
 
   /**
