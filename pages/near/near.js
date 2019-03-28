@@ -25,12 +25,28 @@ Page({
       }
     })
   },
-  tonear(){
-    console.log('跳转小程序')
+  tonear(e){
+    console.log(e)
     wx.showModal({
       title: '提示',
-      content: '暂不支持跳转，请在微信内搜索该小程序',
-      showCancel:false
+      content: '暂不支持跳转，请在微信内搜索该小程序。是否复制该小程序名称',
+      confirmText: '复制',
+      success:(res)=>{
+        console.log(res)
+        if(res.confirm){
+            wx.setClipboardData({
+              data: e.currentTarget.dataset.name,
+              success:(res)=>{
+                console.log(res)
+                wx.getClipboardData({
+                  success:(res)=>{
+                    console.log(res)
+                  }
+                })
+              }
+            })
+        }
+      }
     })
   },
   /**

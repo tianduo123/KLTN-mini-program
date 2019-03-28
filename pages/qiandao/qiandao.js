@@ -469,7 +469,8 @@ Page({
             if (res.data.status == 0) {
               //今日未签到
               this.setData({
-                isqiandao: false
+                isqiandao: false,
+                days:res.data.day
               })
             }
             else {

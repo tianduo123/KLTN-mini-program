@@ -13,7 +13,7 @@ page{
 }
 .top{
   width: 700rpx;
-  height: 600rpx;
+  height: 650rpx;
   background: #ffffff;
   margin: 20rpx auto 20rpx;
   border-radius: 20rpx;
@@ -191,7 +191,8 @@ page{
   height: 900rpx;
   background: #fff;
   border-radius: 10rpx;
-  overflow: hidden
+  box-sizing: border-box;
+  padding: 30rpx
 }
 .content_wrap{
   width: 90%;
@@ -302,4 +303,25 @@ page{
   font-size: 32rpx;
   border-radius: 10rpx;
   color: #ffffff
+}
+.explain{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 10rpx
+}
+.icon{
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #8acd9c;
+  font-size: 22rpx;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  line-height: 30rpx;
+  margin-right: 10rpx
 }
