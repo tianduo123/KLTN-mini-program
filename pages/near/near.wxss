@@ -32,3 +32,14 @@
   -webkit-box-orient:vertical;
   -webkit-line-clamp:3;
 }
+.empty{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column
+}
+.empty>image{
+  width: 280rpx;
+  height: 280rpx;
+}

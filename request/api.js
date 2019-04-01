@@ -215,12 +215,23 @@ function getNscore(a,b){
 function getShare(){
   return API_BASE + `/address/appMa`
 }
-
+//广告位列表 1--> 首页上 2--> 首页下 3--> 详情页
+function getGg(a){
+  return API_BASE + `/active/active?admin_id=15&address_id=${a}`
+}
+//广告详情
+function getGgDetail(a){
+  return API_BASE + `/active/active_detail?id=${a}`
+}
+//广告点击量
+function ggClick(a){
+  return API_BASE + `/active/click?id=${a}`
+}
 module.exports = {
-  API_IMG,
+  API_IMG, BASE_ID,
   getBanner,getTab,getFunctional,getImg,getBannerDetail,getAddress,getVideoList,getFuncdetail,getVideiDetail,like,
   getOpenid,getcode,yuyue,login,isLogin,saveUser,register,video_zan,comment,commentList,commentZan,rankList,allRankList,
   resetPsd,getRule,goodsList,getGoods,getUserScore,getLog,getUserLog,qiandao,isQiandao,submit,share,nearList,message,
   isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2,comment2, commentList2, like2, getZan,getNscore,
-  getShare, getNextPage, getSlqj
+  getShare, getNextPage, getSlqj, getGg, getGgDetail,ggClick 
 }

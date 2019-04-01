@@ -6,15 +6,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-     imgurl:api.API_IMG,
-    //  isShow:true,
-     val:''
+    imgurl:api.API_IMG,
+    val:'',
+    ggList:[],
+    ind:0,
+    ind2:0,
+    intervalId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取广告
+    wx.request({
+      url: api.getGg(1),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          ggList1:res.data.re
+        })
+      }
+    })
+    wx.request({
+      url: api.getGg(2),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          ggList2:res.data.re
+        })
+      }
+    })
     //从缓存中拿用户userInfo数据
     wx.getStorage({
       key: 'userInfo',
@@ -92,6 +114,13 @@ Page({
           functionalList:res.data.re
         })
       }
+    })
+  },
+  //广告详情
+  ggDel(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `../ggDetail/ggDetail?id=${e.currentTarget.dataset.id}`,
     })
   },
   //附近商家
@@ -187,8 +216,6 @@ Page({
     })
   },
 
-
-  //
     /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -210,8 +237,40 @@ Page({
         })
       }
     })
+    //轮播广告
+    this.setData({
+      intervalId : setInterval(() => {
+        this.setData({
+          ind: this.data.ind + 1,
+          ind2: this.data.ind2 + 1
+        })
+        // console.log(this.data.ind)
+        if (this.data.ind >= this.data.ggList1.length) {
+          this.setData({
+            ind: 0
+          })
+        }
+        if (this.data.ind2 >= this.data.ggList2.length) {
+          this.setData({
+            ind2: 0
+          })
+        }
+      }, 2000)
+    })
+  
+  
+    console.log(this.data.intervalId)
   },
 
+  onHide: function(){
+    console.log('页面隐藏',this.data.ind)
+    clearInterval(this.data.intervalId)
+
+  },
+  onUnload : function(){
+    console.log('页面卸载', this.data.ind)
+    clearInterval(this.data.intervalId)
+  },
   /**
    * 用户点击右上角分享
    */

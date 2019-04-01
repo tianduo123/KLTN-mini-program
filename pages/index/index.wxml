@@ -3,6 +3,12 @@
     <image src='{{imgurl+item.image}}' style='width:100%;height:100%'></image>
   </swiper-item>
 </swiper>
+<!-- 广告位 -->
+<view class='gg'>
+  <image src='../../icon/gg.png'></image>
+  <view class='gg_content' data-id='{{ggList1[ind].id}}' bindtap='ggDel'>{{ggList1[ind].title}}</view>
+</view>
+<!-- 我是一条分割线 -->
 <view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>每日即时看</view>
 <view class='tab'>
   <view class='tab-item' wx:for='{{tabList}}' wx:key='{{index}}' bindtap='toVideoDetail' data-id='{{item.id}}'>
@@ -10,18 +16,29 @@
     <view style='font-size:26rpx'>{{item.name}}</view>
   </view>
 </view>
-<view class='line'></view>
+<!-- <view class='line'></view> -->
+<!-- 广告位 -->
+<view class='gg'>
+  <image src='../../icon/gg.png'></image>
+  <view class='gg_content' data-id='{{ggList2[ind].id}}' bindtap='ggDel'>{{ggList2[ind2].title}}</view>
+</view>
+<!-- 我是一条分割线 -->
+
 <view class='near'>
   <view class='near_top'>
     <view style='font-size:26rpx;font-weight:bold'>离我最近</view>
     <view style='font-size:24rpx;color:#999999;margin-right:20rpx' bindtap='tonear'>更多>></view>
   </view>
-  <scroll-view scroll-x style='white-space:nowrap;height:250rpx;'>
+  <scroll-view scroll-x style='white-space:nowrap;height:250rpx;' wx:if='{{near}}'>
     <view class='scroll_item' wx:for='{{near}}' wx:key bindtap='tonear'>
       <image src='{{imgurl+item.fengmian}}' style='width:140rpx;height:140rpx;margin-botton:15rpx;border-radius:50%'></image>
       <view>{{item.school_name}}</view>
     </view>
   </scroll-view>
+  <view wx:else style='text-align:center;line-height:80rpx'>
+    <image src='../../icon/empty.png' style='width:120rpx;height:120rpx'></image>
+    <view style='font-size:26rpx;color:#666'>附近暂无快乐童年合作机构哦！</view>
+  </view>
 </view>
 <view class='line'></view>
 <view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>身临其境</view>

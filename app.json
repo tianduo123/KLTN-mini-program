@@ -15,7 +15,9 @@
     "pages/more_rank/more_rank",
     "pages/scroe_detail/score_detail",
     "pages/everyday/everyday",
-    "pages/slqj_detail/slqj_detail"
+    "pages/slqj_detail/slqj_detail",
+    "pages/ggDetail/ggDetail",
+    "pages/near_detail/near_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

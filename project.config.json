@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 17,
 			"list": [
 				{
 					"id": -1,
@@ -147,6 +147,13 @@
 					"id": -1,
 					"name": "身临其境详情",
 					"pathName": "pages/slqj_detail/slqj_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "附近商家详情",
+					"pathName": "pages/near_detail/near_detail",
 					"scene": null
 				}
 			]

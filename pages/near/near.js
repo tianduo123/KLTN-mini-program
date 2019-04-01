@@ -27,27 +27,30 @@ Page({
   },
   tonear(e){
     console.log(e)
-    wx.showModal({
-      title: '提示',
-      content: '暂不支持跳转，请在微信内搜索该小程序。是否复制该小程序名称',
-      confirmText: '复制',
-      success:(res)=>{
-        console.log(res)
-        if(res.confirm){
-            wx.setClipboardData({
-              data: e.currentTarget.dataset.name,
-              success:(res)=>{
-                console.log(res)
-                wx.getClipboardData({
-                  success:(res)=>{
-                    console.log(res)
-                  }
-                })
-              }
-            })
-        }
-      }
+    wx.navigateTo({
+      url: `../near_detail/near_detail?id=${e.currentTarget.dataset.id}`,
     })
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '暂不支持跳转，请在微信内搜索该小程序。是否复制该小程序名称',
+    //   confirmText: '复制',
+    //   success:(res)=>{
+    //     console.log(res)
+    //     if(res.confirm){
+    //         wx.setClipboardData({
+    //           data: e.currentTarget.dataset.name,
+    //           success:(res)=>{
+    //             console.log(res)
+    //             wx.getClipboardData({
+    //               success:(res)=>{
+    //                 console.log(res)
+    //               }
+    //             })
+    //           }
+    //         })
+    //     }
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

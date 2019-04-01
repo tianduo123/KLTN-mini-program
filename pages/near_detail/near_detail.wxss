@@ -1,0 +1,43 @@
+/* pages/near_detail/near_detail.wxss */
+.video{
+  width: 100%;
+  height: 400rpx
+}
+.info{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.name{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-left: 30rpx
+}
+.info>image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+.copy{
+  font-size: 24rpx;
+  width: 100rpx;
+  height: 35rpx;
+  background: #33CCFF;
+  border-radius: 50rpx;
+  color: #fff;
+  margin-left: 30rpx;
+  text-align: center;
+  line-height: 35rpx
+}
+.content{
+  width: 90%;
+  min-height:300rpx; 
+  box-sizing: border-box;
+  padding: 30rpx;
+  background: #eee;
+  border-radius: 10rpx;
+  margin: 30rpx auto;
+  font-size: 26rpx;
+  color: #666
+}

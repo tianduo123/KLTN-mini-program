@@ -35,13 +35,13 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
       var p = transData.images[i];
       if (p.tag === "img") {
         if (p.attr.src.indexOf('https') === -1) {
-          p.attr.src = "https://all.we-fs.com" + p.attr.src;
+          p.attr.src = "https://syb.qhkltn.com" + p.attr.src;
         }
       }
     }
     for (var i = 0; i < transData.imageUrls.length; i++) {
       var obj = {};
-      transData.imageUrls[i] = "https://all.we-fs.com" + transData.imageUrls[i];
+      transData.imageUrls[i] = "https://syb.qhkltn.com" + transData.imageUrls[i];
       obj.src = transData.imageUrls[i];
       app.globalData.imageUrls.push(obj);
     }

@@ -1,5 +1,11 @@
 <!--pages/everyday/everyday.wxml-->
-<view wx:for='{{Vlist}}' wx:key>
+<view class='top'>
+  <view class='gg'>
+     <image src='../../icon/gg.png'></image>
+     <view class='gg_content' data-id='{{ggList[ind].id}}' bindtap='toGgDetail'>{{ggList[ind].title}}</view>
+  </view>
+</view>
+<view wx:for='{{Vlist}}' wx:key style='margin-top:80rpx'>
 <video controls class='video' src='{{item.video}}' data-id='{{item.id}}' bindplay='play' poster='{{imgUrl+item.image}}'></video>
 <view class='title2'>上传时间：{{item.update_time}}</view>
 <view class='line'></view>

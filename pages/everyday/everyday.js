@@ -10,7 +10,9 @@ Page({
    Vlist:[],//视频列表
    page:0,//页码
    hasMore:true,//true为有更多数据,false为数据加载完毕
-   imgUrl:api.API_IMG
+   imgUrl:api.API_IMG,
+   ind:0,
+   setIntervalId:''
   },
 
   /**
@@ -21,16 +23,16 @@ Page({
     this.setData({
       id:options.id
     })
-    //获取视频列表
-    // wx.request({
-    //   url: api.getVideoList(options.id),
-    //   success:(res)=>{
-    //     console.log(res)
-    //     this.setData({
-    //       Vlist:res.data.re
-    //     })
-    //   }
-    // }) 
+    //获取详情广告
+    wx.request({
+      url: api.getGg(3),
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          ggList:res.data.re
+        })
+      }
+    })
     this.getVlist()
   },
   //获取视频列表函数
@@ -79,7 +81,13 @@ Page({
       }
     })
   },
-
+  //广告详情
+  toGgDetail(e){
+    console.log(e)
+    wx.navigateTo({
+      url: `../ggDetail/ggDetail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
 
 
   //去视频详情
@@ -136,29 +144,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // wx.request({
-    //   url: api.getVideoList(this.data.id),
-    //   success: (res) => {
-    //     console.log(res)
-    //     this.setData({
-    //       Vlist: res.data.re
-    //     })
-    //   }
-    // })
+    this.setData({
+      setIntervalId : setInterval(() => {
+        console.log('循环定时器启动')
+        this.setData({
+          ind: this.data.ind + 1
+        })
+        if (this.data.ind >= this.data.ggList.length) {
+          this.setData({
+            ind: 0
+          })
+        }
+      }, 2000)
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('页面隐藏,关闭定时器')
+    clearInterval(this.data.setIntervalId)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('页面卸载,关闭定时器')
+    clearInterval(this.data.setIntervalId)
   },
 
   /**
