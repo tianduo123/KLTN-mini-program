@@ -20,15 +20,18 @@
   margin-left: 30rpx;
 }
 .copy{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   font-size: 24rpx;
-  width: 100rpx;
+  width: 150rpx;
   height: 35rpx;
   background: #33CCFF;
   border-radius: 50rpx;
   color: #fff;
   margin-left: 30rpx;
   text-align: center;
-  line-height: 35rpx
+  /* line-height: 35rpx */
 }
 .content{
   width: 90%;

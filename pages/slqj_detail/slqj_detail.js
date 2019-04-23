@@ -36,7 +36,8 @@ Page({
       success:(res)=>{
         console.log(res)
         this.setData({
-          commentList:res.data.re
+          commentList:res.data.re,
+          num:res.data.re.length
         })
       }
     })
@@ -73,7 +74,8 @@ Page({
                 success: (res) => {
                   console.log(res)
                   this.setData({
-                    commentList: res.data.re
+                    commentList: res.data.re,
+                    num:res.data.re.length
                   })
                 }
               })
@@ -92,10 +94,30 @@ Page({
         wx.showToast({
           title: res.data.msg,
         })
+        //点赞成功改变点赞按钮样式
+        if(res.data.status==1){
+          wx.setStorage({
+            key: 'iszan',
+            data: [a=>true],
+          })
+        }else{
+          wx.setStorage({
+            key: 'iszan',
+            data: false,
+          })
+        }
         //点赞成功刷新点赞人数
         wx.request({
           url: api.getZan(this.data.id),
           success:(res)=>{
+            wx.getStorage({
+              key: 'iszan',
+              success:(res)=>{
+                this.setData({
+                  iszan:res.data
+                })
+              },
+            })
             console.log(res)
             this.setData({
               zan:res.data.re.zan
@@ -116,7 +138,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getStorage({
+      key: 'iszan',
+      success:(res)=>{
+        this.setData({
+          iszan:res.data
+        })
+      },
+    })
   },
 
   /**

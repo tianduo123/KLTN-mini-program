@@ -1,13 +1,6 @@
-<!--pages/video_detail/video_detail.wxml-->
-<!-- <import src="../../wxParse/wxParse.wxml" /> -->
-
-<video controls class='video' src='{{detail.video}}' bindplay='browser' poster='{{video_url+detail.image}}' object-fit='cover'></video>
-<!-- <view class='title'>{{detail.}}</view> -->
+<video controls class='video' src='{{detail.video}}'></video>
 <view class='title2'>上传时间：{{detail.update_time}}</view>
 <view class='line'></view>
-<!-- <view class='wxParse'>
-  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
-</view> -->
 <!-- 点赞区 -->
 <view class='btn'>
   <view class='btn_item'>

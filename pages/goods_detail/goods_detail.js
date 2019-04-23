@@ -22,7 +22,7 @@ Page({
         this.setData({
           detail:res.data.re
         })
-        var article =this.data.detail.content;
+        var article = JSON.parse(this.data.detail.content);
         WxParse.wxParse('article', 'html', article, this, 5);
       }
     })

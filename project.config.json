@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -154,6 +154,13 @@
 					"id": -1,
 					"name": "附近商家详情",
 					"pathName": "pages/near_detail/near_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分页测试",
+					"pathName": "pages/test/test",
 					"scene": null
 				}
 			]

@@ -44,7 +44,8 @@ button{
 }
 .title{
   font-size: 30rpx;
-  font-weight: bold
+  font-weight: bold;
+  margin: 20rpx 0 20rpx 20rpx
 }
 .item{
   display: flex;

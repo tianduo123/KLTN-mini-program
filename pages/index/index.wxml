@@ -8,15 +8,22 @@
   <image src='../../icon/gg.png'></image>
   <view class='gg_content' data-id='{{ggList1[ind].id}}' bindtap='ggDel'>{{ggList1[ind].title}}</view>
 </view>
+<!-- 每日即时看 -->
+
+<view class='everyDay'>
+  <image src='../../icon/look.png' style='width:250rpx;height:250rpx' bindtap='look'></image>
+  <image src='../../icon/pin.png' style='width:250rpx;height:250rpx' bindtap='toPintuan'></image>
+</view>
+<view class='line'></view>
+
 <!-- 我是一条分割线 -->
-<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>每日即时看</view>
+<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx;color:#FF0033'>主打课程</view>
 <view class='tab'>
   <view class='tab-item' wx:for='{{tabList}}' wx:key='{{index}}' bindtap='toVideoDetail' data-id='{{item.id}}'>
     <image src='{{imgurl+item.image}}' style='width:100rpx;height:100rpx'></image>
     <view style='font-size:26rpx'>{{item.name}}</view>
   </view>
 </view>
-<!-- <view class='line'></view> -->
 <!-- 广告位 -->
 <view class='gg'>
   <image src='../../icon/gg.png'></image>
@@ -26,7 +33,7 @@
 
 <view class='near'>
   <view class='near_top'>
-    <view style='font-size:26rpx;font-weight:bold'>离我最近</view>
+    <view style='font-size:26rpx;font-weight:bold;color:#FF0033'>离我最近</view>
     <view style='font-size:24rpx;color:#999999;margin-right:20rpx' bindtap='tonear'>更多>></view>
   </view>
   <scroll-view scroll-x style='white-space:nowrap;height:250rpx;' wx:if='{{near}}'>
@@ -41,7 +48,7 @@
   </view>
 </view>
 <view class='line'></view>
-<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx'>身临其境</view>
+<view style='margin:27rpx 0 27rpx 27rpx;font-weight:bold;font-size:28rpx;color:#FF0033'>身临其境</view>
 <view class='funwrap'>
   <view class='fun-item' wx:for='{{functionalList}}' wx:key='{{inedx}}' data-src='{{item.video}}' data-id='{{item.id}}' bindtap='toFuncdetail'>
     <view style='width:300rpx;height:141rpx'>

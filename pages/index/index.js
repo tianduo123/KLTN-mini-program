@@ -8,7 +8,7 @@ Page({
   data: {
     imgurl:api.API_IMG,
     val:'',
-    ggList:[],
+    ggList:[], 
     ind:0,
     ind2:0,
     intervalId:''
@@ -116,6 +116,36 @@ Page({
       }
     })
   },
+  //拼团
+  toPintuan(){
+    wx.request({
+      url: api.hasPin(),
+      success:(res)=>{
+        console.log(res)
+        if(res.data.re.pin==1){
+          wx.navigateToMiniProgram({
+            appId:'wx3950a029465d5070',
+            extraData:{
+              appid:api.BASE_ID
+            },
+            envVersion:'trial',
+            success:(res)=>{
+              console.log(res)
+            },
+            fail:(res)=>{
+              console.log(res)
+            }
+          })
+        }else{
+          wx.showToast({
+            title: '暂无拼团活动',
+            image: '../../icon/cry.png'
+          })
+        }
+      }
+    })
+
+  },
   //广告详情
   ggDel(e){
     console.log(e)
@@ -192,12 +222,19 @@ Page({
       })
     }
   },
-
   //每日即时看
-  toVideoDetail(e){
-    console.log('点击了每日即时看',e)
+  look(){
+    console.log('每日即时看')
     wx.navigateTo({
-      url: `/pages/everyday/everyday?id=${e.currentTarget.dataset.id}`,
+      url: `/pages/everyday/everyday`,
+    })
+  },
+  //主打课程
+  toVideoDetail(e){
+    console.log('主打课程',e)
+    wx.navigateTo({
+      url: `/pages/video_detail/video_detail?id=${e.currentTarget.dataset.id}`,
+
     })
   },
   //商品详情
@@ -234,6 +271,25 @@ Page({
         console.log(res)
         this.setData({
           functionalList: res.data.re
+        })
+      }
+    })
+    //获取广告
+    wx.request({
+      url: api.getGg(1),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          ggList1: res.data.re
+        })
+      }
+    })
+    wx.request({
+      url: api.getGg(2),
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          ggList2: res.data.re
         })
       }
     })

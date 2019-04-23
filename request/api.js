@@ -1,6 +1,4 @@
-//本地服务器地址
-// const API_BASE = 'http://192.168.0.100/syb/index.php/Api'
-// const API_IMG = 'http://192.168.0.100/syb/'
+
 //服务器地址
 const API_BASE = 'https://syb.qhkltn.com/index.php/Api'
 const API_IMG = 'https://syb.qhkltn.com/'
@@ -26,9 +24,9 @@ function getTab(){
 function getVideoList(a){
   return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}`
 }
-//课程裂变分页
-function getNextPage(a,b){
-  return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}&page=${b}`
+//分类下视频id
+function getVideoId(a){
+  return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}`
 }
 //获取视频详情
 function getVideiDetail(e,f){
@@ -175,6 +173,10 @@ function share(a,b){
 function nearList(a,b){
   return API_BASE + `/address/fiveRange?wei=${a}&jing=${b}&admin_id=${BASE_ID}`
 }
+//附近详情
+function nearDetail(a){
+  return API_BASE + `/address/video?admin_id=${a}`
+}
 //商家留言板
 function message(){
   return API_BASE + `/Comment/commentList?admin_id=${BASE_ID}`
@@ -207,6 +209,10 @@ function cancel(a){
 function getZan(a){
   return API_BASE + `/index/update_zan?id=${a}`
 }
+//主打课更新点赞数量
+function getZan2(a){
+  return API_BASE + `/index/course_update?id=${a}`
+}
 //新注册用户领积分
 function getNscore(a,b){
   return API_BASE + `/user/newUserScore?user_id=${a}&num=${b}`
@@ -227,11 +233,49 @@ function getGgDetail(a){
 function ggClick(a){
   return API_BASE + `/active/click?id=${a}`
 }
+//每日即时看列表
+ function look1(a){
+   return API_BASE + `/view/viewIndex?admin_id=${BASE_ID}&page=${a}`
+ }
+//每日即时看详情
+function look2(a,b) {
+  return API_BASE + `/view/view?admin_id=${BASE_ID}&id=${a}&openid=${b}`
+}
+//每日即时看浏览量+1
+function look3(a) {
+  return API_BASE + `/view/viewBro?id=${a}`
+}
+//每日即时看点赞
+function look4(a,b) {
+  return API_BASE + `/view/viewZan?admin_id=${BASE_ID}&openid=${a}&view_id=${b}`
+}
+//每日即时看更新视频点赞数量
+function look5(a) {
+  return API_BASE + `/view/view_update?id=${a}`
+}
+//每日即时看视频评论
+function look6(a,b,c) {
+  return API_BASE + `/view/comment?openid=${a}&admin_id=${BASE_ID}&view_id=${b}&content=${c}`
+}
+//每日即时看评论列表
+function look7(a) {
+  return API_BASE + `/view/commentList?admin_id=${BASE_ID}&view_id=${a}`
+}
+//每日即时看评论点赞
+function look8(a,b) {
+  return API_BASE + `/view/viewCommentZan?admin_id=${BASE_ID}&openid=${a}&comment_id=${b}`
+}
+//判断当前商家是否开通拼团功能
+function hasPin(){
+  return API_BASE + `/common/is_active?admin_id=${BASE_ID}`
+}
+
 module.exports = {
   API_IMG, BASE_ID,
   getBanner,getTab,getFunctional,getImg,getBannerDetail,getAddress,getVideoList,getFuncdetail,getVideiDetail,like,
   getOpenid,getcode,yuyue,login,isLogin,saveUser,register,video_zan,comment,commentList,commentZan,rankList,allRankList,
   resetPsd,getRule,goodsList,getGoods,getUserScore,getLog,getUserLog,qiandao,isQiandao,submit,share,nearList,message,
-  isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2,comment2, commentList2, like2, getZan,getNscore,
-  getShare, getNextPage, getSlqj, getGg, getGgDetail,ggClick 
+  isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2, comment2, commentList2, like2, getZan,getZan2,        
+  getNscore, getShare, getVideoId, getSlqj, getGg, getGgDetail, ggClick, nearDetail, look1, look2, look3, look4, look5, look6,    
+  look7, look8, hasPin
 }

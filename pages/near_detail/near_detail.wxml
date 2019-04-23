@@ -1,13 +1,13 @@
 <!--pages/near_detail/near_detail.wxml-->
-<video class='video'></video>
+<video class='video' src='{{detail.video}}' poster='{{imgUrl+fengmian}}'></video>
 <view class='info'>
   <image src='../../icon/school.png'></image>
-  <view class='name'>幼儿园名称</view>
-  <view class='copy' bindtap='copy'>复制</view>
+  <view class='name'>{{name}}</view>
+  <view class='copy' bindtap='copy'>复制该名称</view>
 </view>
 <view class='content'>
   <view style='font-size:32rpx;display:inline-block'>简介:</view>
-  该属性值会对元素的高度设置一个最低限制。因此，元素可以比指定值高，但不能比其矮。不允许指定负值。该属性值会对元素的高度设置一个最低限制。因此，元素可以比指定值高，但不能比其矮。不允许指定负值。
+  {{content}}
   <view style='font-size:28rpx;color:#FF3300;text-align:center;margin-top:40rpx'> * 想要了解更多，请在微信内搜索该小程序哦</view>
 </view>
 

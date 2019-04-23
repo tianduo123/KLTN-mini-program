@@ -17,7 +17,9 @@
     "pages/everyday/everyday",
     "pages/slqj_detail/slqj_detail",
     "pages/ggDetail/ggDetail",
-    "pages/near_detail/near_detail"
+    "pages/near_detail/near_detail",
+    "pages/video_detail2/video_detail2",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -58,5 +60,8 @@
         "selectedIconPath": "./icon/sele_me.png"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx3950a029465d5070"
+  ]
 }

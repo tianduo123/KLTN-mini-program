@@ -140,7 +140,7 @@ page{
 }
 .gg{
   width: 90%;
-  height: 60rpx;
+  height: 65rpx;
   background: linear-gradient(to right, #edf1f4, #daf6f9);
   border-radius: 50rpx;
   margin: 30rpx auto;
@@ -155,4 +155,9 @@ page{
 .gg_content{
   font-size: 26rpx;
   margin-left: 30rpx
+}
+.everyDay{
+  display: flex;
+  align-items: center;
+  justify-content: space-around
 }

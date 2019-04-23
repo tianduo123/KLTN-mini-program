@@ -103,8 +103,8 @@ function strGreeceDiscode(str){
 
 function strcharacterDiscode(str){
     // 加入常用解析
-    str = str.replace(/&nbsp;/g, ' ');
-    str = str.replace(/&nbsp；/g, ' ');
+  str = str.replace(/&nbsp;/g, '\xa0');
+  str = str.replace(/&nbsp；/g, '\xa0');
     str = str.replace(/&quot;/g, "'");
     // str = str.replace(/&quot；/g, "'");
     str = str.replace(/&amp;/g, '&');

@@ -1,2 +1,18 @@
 /* pages/goods_detail/goods_detail.wxss */
+page{
+  box-sizing: border-box;
+  padding-bottom: 50rpx
+}
 @import "/wxParse/wxParse.wxss";
+
+.img{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* margin-bottom: 50rpx */
+}
+.img>image{
+  width: 180rpx;
+  height: 180rpx
+}
