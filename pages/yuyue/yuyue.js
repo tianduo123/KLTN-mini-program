@@ -1,5 +1,7 @@
 // pages/yuyue/yuyue.js
 let api = require('../../request/api.js')
+let app = getApp()
+
 Page({
 
   /**
@@ -17,6 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     //获取当前时间
     var myDate = new Date()
     var y = 1900 + myDate.getYear()
@@ -43,7 +46,7 @@ Page({
       val:e.detail.value
     })
   },
-  //预约咨询函数
+  //立即预约函数
   tijiao(e){
     console.log(e)
     //判断时间、姓名、手机号是否合法
@@ -65,7 +68,7 @@ Page({
     }else{
       //调取预约接口，成功后执行以下代码
       wx.request({
-        url: api.yuyue(e.detail.value.name,e.detail.value.phone,e.detail.value.time),
+        url: api.yuyue(e.detail.value.name,e.detail.value.phone,e.detail.value.time,app.globalData.openid),
         success:(res)=>{
           console.log(res)
           wx.showToast({
@@ -82,6 +85,12 @@ Page({
       })
     
     }
+  },
+  //我的预约
+  Myyuyeu(){
+    wx.navigateTo({
+      url: '../myyuyue/myyuyue',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -101,14 +110,19 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+console.log('onhide页面隐藏')
+  this.setData({
+    val:'',
+    name1:'',
+    name3:'',
+    tel:''
+  })
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**

@@ -1,5 +1,5 @@
 /* pages/video_detail/video_detail.wxss */
-/* @import "/wxParse/wxParse.wxss"; */
+@import "/wxParse/wxParse.wxss";
 page{
   box-sizing: border-box;
   padding-bottom: 120rpx
@@ -73,6 +73,13 @@ button{
   margin-top: 20rpx;
   margin-left: 30rpx;
   margin-bottom: 30rpx
+}
+.comment_title2{
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  /* margin-bottom: 30rpx */
 }
 .comment_wrap{
   box-sizing: border-box;

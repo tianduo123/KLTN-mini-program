@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/index2/index2",
     "pages/logs/logs",
     "pages/lianxi/lianxi",
     "pages/yuyue/yuyue",
@@ -19,7 +19,10 @@
     "pages/ggDetail/ggDetail",
     "pages/near_detail/near_detail",
     "pages/video_detail2/video_detail2",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/myyuyue/myyuyue",
+    "pages/index/index",
+    "pages/video_list/video_list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,7 +39,7 @@
     "selectedColor": "#ff9600",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index2/index2",
         "text": "首页",
         "iconPath": "./icon/index.png",
         "selectedIconPath": "./icon/sele_index.png"
@@ -62,6 +65,8 @@
     ]
   },
   "navigateToMiniProgramAppIdList": [
-    "wx3950a029465d5070"
-  ]
+    "wx3950a029465d5070",
+    "wx9f726f8d93b57acd"
+  ],
+  "sitemapLocation": "sitemap.json"
 }

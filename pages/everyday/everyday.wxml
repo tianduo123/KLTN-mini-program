@@ -1,13 +1,23 @@
 <!--pages/everyday/everyday.wxml-->
 <view class='top'>
-  <view class='gg'>
-    <image src='../../icon/gg.png'></image>
-    <view class='gg_content' data-id='{{ggList[ind].id}}' bindtap='toGgDetail'>{{ggList[ind].title}}</view>
-  </view>
+  <swiper class='gg' autoplay='true' interval='2000'>
+    <swiper-item style='display:flex;align-items:center'>
+      <image class='img' src='../../icon/gg.png'></image>
+      <view class='gg_content' data-id='{{ggList[ind].id}}' bindtap='toGgDetail'>广告位招商1</view>
+    </swiper-item>
+    <swiper-item style='display:flex;align-items:center'>
+      <image class='img' src='../../icon/gg.png'></image>
+      <view class='gg_content' data-id='{{ggList[ind].id}}' bindtap='toGgDetail'>广告位招商2</view>
+    </swiper-item>
+    <swiper-item style='display:flex;align-items:center'>
+      <image class='img' src='../../icon/gg.png'></image>
+      <view class='gg_content' data-id='{{ggList[ind].id}}' bindtap='toGgDetail'>广告位招商3</view>
+    </swiper-item>
+  </swiper>
 </view>
 <view wx:for='{{contentList}}' wx:key>
   <view class='title3'>{{item.title}}</view>
-  <video controls class='video' src='{{item.video}}' data-id='{{item.id}}' bindplay='play' poster='{{imgUrl+item.image}}' object-fit='cover'></video>
+  <video controls class='video' src='{{item.video}}' data-id='{{item.id}}' bindplay='play' poster='{{imgUrl+item.image}}' object-fit='cover' enable-play-gesture='true' ></video>
   <view class='title2'>上传时间：{{item.update_time}}</view>
   <view class='line'></view>
   <!-- 点赞区 -->

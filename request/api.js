@@ -21,8 +21,8 @@ function getTab(){
   return API_BASE + `/index/courseCategory?admin_id=${BASE_ID}`
 }
 //课程列表
-function getVideoList(a){
-  return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}&cid=${a}`
+function getVideoList(){
+  return API_BASE + `/index/courseIndex?admin_id=${BASE_ID}`
 }
 //分类下视频id
 function getVideoId(a){
@@ -57,8 +57,12 @@ function getImg(){
   return API_BASE + `/Yu/image?admin_id=${BASE_ID}`
 }
 //预约接口
-function yuyue(a,b,c){
-  return API_BASE + `/Yu/yuyue?admin_id=${BASE_ID}&order_name=${a}&phone=${b}&yuyue_time=${c}`
+function yuyue(a,b,c,d){
+  return API_BASE + `/Yu/yuyue?admin_id=${BASE_ID}&order_name=${a}&phone=${b}&yuyue_time=${c}&openid=${d}`
+}
+//我的预约
+function myyuyeu(a){
+  return API_BASE + `/Yu/myYuyue?openid=${a}&admin_id=${BASE_ID}`
 }
 //获取联系我们数据
 function getAddress(){
@@ -277,5 +281,5 @@ module.exports = {
   resetPsd,getRule,goodsList,getGoods,getUserScore,getLog,getUserLog,qiandao,isQiandao,submit,share,nearList,message,
   isDone, getScore, isGet, tuijian, isMake, cancel, addBrowser, addBrowser2, comment2, commentList2, like2, getZan,getZan2,        
   getNscore, getShare, getVideoId, getSlqj, getGg, getGgDetail, ggClick, nearDetail, look1, look2, look3, look4, look5, look6,    
-  look7, look8, hasPin
+  look7, look8, hasPin, myyuyeu
 }

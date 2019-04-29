@@ -114,19 +114,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.setData({
-      setIntervalId: setInterval(() => {
-        // console.log('循环定时器启动')
-        this.setData({
-          ind: this.data.ind + 1
-        })
-        if (this.data.ind >= this.data.ggList.length) {
-          this.setData({
-            ind: 0
-          })
-        }
-      }, 2000)
-    })
+    // this.setData({
+    //   setIntervalId: setInterval(() => {
+    //     // console.log('循环定时器启动')
+    //     this.setData({
+    //       ind: this.data.ind + 1
+    //     })
+    //     if (this.data.ind >= this.data.ggList.length) {
+    //       this.setData({
+    //         ind: 0
+    //       })
+    //     }
+    //   }, 2000)
+    // })
     this.getList()
   },
 
@@ -134,16 +134,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-    console.log('页面隐藏,关闭定时器')
-    clearInterval(this.data.setIntervalId)
+    // console.log('页面隐藏,关闭定时器')
+    // clearInterval(this.data.setIntervalId)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    console.log('页面卸载,关闭定时器')
-    clearInterval(this.data.setIntervalId)
+    // console.log('页面卸载,关闭定时器')
+    // clearInterval(this.data.setIntervalId)
   },
 
   /**

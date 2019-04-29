@@ -1,5 +1,5 @@
 <!--pages/slqj_detail/slqj_detail.wxml-->
-<video style='width:100%;height:400rpx' src='{{info.video}}' poster='{{imgUrl+info.image}}' object-fit='cover'></video>
+<video style='width:100%;height:400rpx' src='{{info.video}}' poster='{{imgUrl+info.image}}' object-fit='cover' enable-play-gesture='true' ></video>
 <view class='menu'>
   <view class='browser'>
     <image src='../../icon/zuji.png' style='width:50rpx;height:50rpx'></image>

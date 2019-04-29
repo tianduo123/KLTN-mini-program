@@ -64,6 +64,8 @@
     <view> <view style='display:inline-block;color:#FF3300'>*</view> 每日签到成长豆累加,连续签到7天后，只要签到不中断每日成长豆 <view style='display:inline-block;color:#FF3300'>+7</view></view>
     <view> <view style='display:inline-block;color:#FF3300'>*</view> 当连续签到中断后,则回到初始签到状态,重新累计签到天数</view>
   </view>
+  <!-- <view class='top_item' style='border-bottom:1px solid #eeeeee' bindtap='toyuyue'>我的预约 <view> > </view> </view> -->
+  <!-- <view class='top_item' bindtap='tomsg'>精选留言板 <view> > </view> </view> -->
 </view>
 
 <view class='bottom'>
@@ -121,6 +123,7 @@
     </view>
   </view>
 </view>
+
 <!-- 精选留言板 -->
 <view class='bottom2'>
   <view class='title'>

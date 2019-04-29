@@ -19,24 +19,24 @@ Page({
    */
   onLoad: function (options) {
     //获取广告
-    wx.request({
-      url: api.getGg(1),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          ggList1:res.data.re
-        })
-      }
-    })
-    wx.request({
-      url: api.getGg(2),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          ggList2:res.data.re
-        })
-      }
-    })
+    // wx.request({
+    //   url: api.getGg(1),
+    //   success:(res)=>{
+    //     console.log(res)
+    //     this.setData({
+    //       ggList1:res.data.re
+    //     })
+    //   }
+    // })
+    // wx.request({
+    //   url: api.getGg(2),
+    //   success:(res)=>{
+    //     console.log(res)
+    //     this.setData({
+    //       ggList2:res.data.re
+    //     })
+    //   }
+    // })
     //从缓存中拿用户userInfo数据
     wx.getStorage({
       key: 'userInfo',

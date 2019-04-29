@@ -33,6 +33,12 @@ Page({
       }
     })
   },
+  //我的预约
+  // toyuyue(){
+  //   wx.navigateTo({
+  //     url: '../myyuyue/myyuyue',
+  //   })
+  // },
   //签到
   qiandao(){
     console.log(this.data.userId)

@@ -75,7 +75,7 @@ page{
   display: flex;
   align-items: center
 }
-.gg>image{
+.img{
   margin-left: 30rpx;
   width: 40rpx;
   height: 40rpx
